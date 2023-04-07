@@ -134,4 +134,4 @@ $ roslaunch sky_sim runway.launch
 
 In addition, you can open QGround to test your flight simulation and RViz to visualize the camera image stream.
 
-![Flight Test Demo]{./docs/images/demo.png}
+![Flight Test Demo](./docs/images/demo.png)
