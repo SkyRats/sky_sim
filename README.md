@@ -101,7 +101,7 @@ git clone https://github.com/SkyRats/sky_sim.git
 
 Run the following command to tell Gazebo where to look for models:
 ```
-echo "GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:$HOME/catkin_ws/src/iq_sim/models" >> ~/.bashrc
+echo "GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:$HOME/sky_ws/src/sky_sim/models" >> ~/.bashrc
 ```
 
 ## 7. Build instructions
