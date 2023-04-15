@@ -124,12 +124,12 @@ To test the simulation, you need at least two terminal windows:
 
 - Run SITL:
 ```console
-$ sim_vehicle.py -v ArduCopter -f gazebo-iris --console
+sim_vehicle.py -v ArduCopter -f gazebo-iris --console
 ```
 
 - Launch Gazebo and ROS:
 ```console
-$ roslaunch sky_sim runway.launch
+roslaunch sky_sim runway.launch
 ```
 
 In addition, you can open QGround to test your flight simulation and RViz to visualize the camera image stream.
