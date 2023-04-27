@@ -23,6 +23,11 @@ sudo apt remove <other-gazebo-versions>
 ```
 
 Follow the alternative installation: https://classic.gazebosim.org/tutorials?tut=install_ubuntu&cat=install
+
+Add a line to end of `~/.bashrc` by running the following command:
+```
+echo "source /usr/share/gazebo/setup.sh" >> ~/.bashrc
+```
   
 ## 3. Install the Ardupilot-Gazebo plugin
 
