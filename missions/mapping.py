@@ -11,7 +11,6 @@ from cv_bridge import CvBridge
 import numpy as np
 import math
 import time
-import pyexiv2
 import sys
 from fractions import Fraction
 from PIL import Image as img
