@@ -1,6 +1,5 @@
 import cv2
 import rospy
-import mavros_msgs
 from mavros_msgs import srv
 from mavros_msgs.srv import SetMode, CommandBool
 from geometry_msgs.msg import PoseStamped, TwistStamped
@@ -9,7 +8,6 @@ from geographic_msgs.msg import GeoPoseStamped
 from sensor_msgs.msg import BatteryState, NavSatFix, Image
 from cv_bridge import CvBridge 
 import numpy as np
-import math
 import time
 import sys
 from fractions import Fraction
@@ -24,12 +22,13 @@ class Mapping():
 
         self.bridge_object = CvBridge()
         rospy.init_node('mapping_node', anonymous=False)
-        self.cam_sub = rospy.Subscriber('/webcam/image_raw', Image, self.cam_callback)
         self.quantidade_fotos = 0
         self.rate = rospy.Rate(0.5)
         self.global_pose = NavSatFix()
 
+        #subscribers
         self.global_position_sub = rospy.Subscriber('/mavros/global_position/global', NavSatFix, self.global_callback)
+        self.cam_sub = rospy.Subscriber('/webcam/image_raw', Image, self.cam_callback)
 
     def global_callback(self, global_data):
 
