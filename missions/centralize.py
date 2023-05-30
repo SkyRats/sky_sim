@@ -93,18 +93,29 @@ def msg_receiver(message):
             x_ang = (x_avg - horizontal_res*0.5)*horizontal_fov/horizontal_res
             y_ang = (y_avg - vertical_res*0.5)*vertical_fov/vertical_res
 
+            
+        # times = time.time()*1e6
+        dist = float(z)/100
+
+        # print(f'MARKER POSITION: x={x} | y={y} | z={z} | x_ang={x_ang} | y_ang={y_ang}')
+        print(f'MARKER POSITION: x_ang={round(x_ang, 2)} | y_ang={round(y_ang, 2)} | z={round(dist,2)}')
+
+        if abs(vehicle.location.local_frame.down) > 2:
+
             if vehicle.mode != 'LAND':
                 vehicle.mode = VehicleMode('LAND')
                 while vehicle.mode != 'LAND':
                     time.sleep(1)
                 print('vehicle in LAND mode')
-            
-        # times = time.time()*1e6
-        dist = float(z)/100
-        send_land_message(x_ang, y_ang, dist)
 
-        # print(f'MARKER POSITION: x={x} | y={y} | z={z} | x_ang={x_ang} | y_ang={y_ang}')
-        print(f'MARKER POSITION: x_ang={round(x_ang, 2)} | y_ang={round(y_ang, 2)} | z={round(dist,2)}')
+            send_land_message(x_ang, y_ang, dist)
+            
+        else:
+            print("Atingiu a altura desejada!")
+            if vehicle.mode != "GUIDED":
+                vehicle.mode = VehicleMode('GUIDED')
+                while vehicle.mode != 'GUIDED':
+                    time.sleep(1)
 
         ros_img = bridge_object.cv2_to_imgmsg(final, 'bgr8')
         newimg_pub.publish(ros_img)
@@ -124,7 +135,7 @@ vehicle = connect(args.connect)
 print(f"Mode: {vehicle.mode.name}")
 print(" Global Location: %s" % vehicle.location.global_frame)
 print(" Global Location (relative altitude): %s" % vehicle.location.global_relative_frame)
-print(" Local Location: %s" % vehicle.location.local_frame)
+print(" Local Location: %s" % vehicle.location.local_frame.down)
 print(" Attitude: %s" % vehicle.attitude)
 print(" Velocity: %s" % vehicle.velocity)
 print(" Gimbal status: %s" % vehicle.gimbal)
