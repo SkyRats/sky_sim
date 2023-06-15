@@ -14,6 +14,7 @@ from fractions import Fraction
 from PIL import Image as img
 import piexif
 from PIL.ExifTags import TAGS, GPSTAGS
+from decimal import Decimal, getcontext
 #cap = cv2.VideoCapture(0)
 
 class Mapping():
@@ -23,7 +24,7 @@ class Mapping():
         self.bridge_object = CvBridge()
         rospy.init_node('mapping_node', anonymous=False)
         self.quantidade_fotos = 0
-        self.rate = rospy.Rate(0.5)
+        self.rate = rospy.Rate(0.769)
         self.global_pose = NavSatFix()
 
         #subscribers
@@ -53,46 +54,64 @@ class Mapping():
         name = "/home/renato/Documents/Images/image%d.jpg"%self.quantidade_fotos
         output = "/home/renato/Documents/tagged/image%d.jpg"%self.quantidade_fotos
         name_clean = "image%d.jpg"%self.quantidade_fotos
+        latitude = self.global_pose.latitude
+        longitude = self.global_pose.longitude
         frame = self.cam_frame
         retorno = cv2.imwrite(name, frame)
-        self.add_gps_location(name,self.global_pose.latitude, self.global_pose.longitude,output)
-        rospy.loginfo("Image " + str(self.quantidade_fotos) + " at lat: " +  str(self.global_pose.latitude) + ", long: " + str(self.global_pose.longitude))
+        self.add_gps_metadata(name,latitude, longitude)
+        rospy.loginfo("Image " + str(self.quantidade_fotos) + " at lat: " +  str(latitude) + ", long: " + str(self.global_pose.longitude))
         self.quantidade_fotos += 1
         
     
-    def add_gps_location(self,image_path, latitude, longitude, output_path):
+    
+    def float_to_rational(self,f):
+        """
+        Convert a floating-point number to a rational number (numerator, denominator).
+        """
+        f = Fraction(f).limit_denominator()
+        return f.numerator, f.denominator
 
+    def add_gps_metadata(self,image_path, latitude, longitude):
         exif_dict = piexif.load(image_path)
-        
+
         # Convert latitude and longitude to degrees, minutes, and seconds
-        lat_deg = int(abs(latitude))
-        lat_min = int((abs(latitude) - lat_deg) * 60)
-        lat_sec = round(((abs(latitude) - lat_deg) * 60 - lat_min) * 60)
+        lat_deg = abs(latitude)
+        lat_min, lat_sec = divmod(lat_deg * 3600, 60)
+        lat_deg, lat_min = divmod(lat_min, 60)
         lat_ref = 'N' if latitude >= 0 else 'S'
-        
-        lon_deg = int(abs(longitude))
-        lon_min = int((abs(longitude) - lon_deg) * 60)
-        lon_sec = round(((abs(longitude) - lon_deg) * 60 - lon_min) * 60)
+
+        lon_deg = abs(longitude)
+        lon_min, lon_sec = divmod(lon_deg * 3600, 60)
+        lon_deg, lon_min = divmod(lon_min, 60)
         lon_ref = 'E' if longitude >= 0 else 'W'
-        
+
+        # Convert coordinates to rational values
+        lat_deg_num, lat_deg_den = self.float_to_rational(lat_deg)
+        lat_min_num, lat_min_den = self.float_to_rational(lat_min)
+        lat_sec_num, lat_sec_den = self.float_to_rational(lat_sec)
+
+        lon_deg_num, lon_deg_den = self.float_to_rational(lon_deg)
+        lon_min_num, lon_min_den = self.float_to_rational(lon_min)
+        lon_sec_num, lon_sec_den = self.float_to_rational(lon_sec)
+
         # Construct the GPS coordinates
         gps_ifd = {
             piexif.GPSIFD.GPSVersionID: (2, 0, 0, 0),
             piexif.GPSIFD.GPSLatitudeRef: lat_ref,
-            piexif.GPSIFD.GPSLatitude: ((lat_deg, 1), (lat_min, 1), (lat_sec, 1)),
+            piexif.GPSIFD.GPSLatitude: ((lat_deg_num, lat_deg_den), (lat_min_num, lat_min_den), (lat_sec_num, lat_sec_den)),
             piexif.GPSIFD.GPSLongitudeRef: lon_ref,
-            piexif.GPSIFD.GPSLongitude: ((lon_deg, 1), (lon_min, 1), (lon_sec, 1)),
+            piexif.GPSIFD.GPSLongitude: ((lon_deg_num, lon_deg_den), (lon_min_num, lon_min_den), (lon_sec_num, lon_sec_den)),
         }
-        
+
         # Update the image's EXIF data with the GPS information
         exif_dict['GPS'] = gps_ifd
-        
+
         # Convert the EXIF data back to bytes
         exif_bytes = piexif.dump(exif_dict)
-        
+
         # Save the updated image with the GPS metadata
         piexif.insert(exif_bytes, image_path)
-        
+
         print("GPS metadata added to the image.")
 
 if __name__ == '__main__':
