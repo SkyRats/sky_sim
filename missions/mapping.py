@@ -15,6 +15,7 @@ from PIL import Image as img
 import piexif
 from PIL.ExifTags import TAGS, GPSTAGS
 from decimal import Decimal, getcontext
+from datetime import datetime
 #cap = cv2.VideoCapture(0)
 
 class Mapping():
@@ -51,8 +52,8 @@ class Mapping():
     def save_pictures(self):
 
         #print("cheguei")
-        name = "/home/renato/Documents/Images/image%d.jpg"%self.quantidade_fotos
-        output = "/home/renato/Documents/tagged/image%d.jpg"%self.quantidade_fotos
+        name = "/home/software/Documents/Images/image%d.jpg"%self.quantidade_fotos
+        output = "/home/software/Documents/tagged/image%d.jpg"%self.quantidade_fotos
         name_clean = "image%d.jpg"%self.quantidade_fotos
         latitude = self.global_pose.latitude
         longitude = self.global_pose.longitude
@@ -102,10 +103,17 @@ class Mapping():
             piexif.GPSIFD.GPSLongitudeRef: lon_ref,
             piexif.GPSIFD.GPSLongitude: ((lon_deg_num, lon_deg_den), (lon_min_num, lon_min_den), (lon_sec_num, lon_sec_den)),
         }
-
-        # Update the image's EXIF data with the GPS information
+        
         exif_dict['GPS'] = gps_ifd
+        # Update the image's EXIF data with the GPS information
+        # Get the current date and time
+        timestamp = datetime.now()
+        timestamp_str = timestamp.strftime("%Y:%m:%d %H:%M:%S")
 
+    # Construct the time metadata
+        exif_dict['0th'][piexif.ImageIFD.DateTime] = timestamp_str
+        exif_dict['Exif'][piexif.ExifIFD.DateTimeOriginal] = timestamp_str
+        exif_dict['Exif'][piexif.ExifIFD.DateTimeDigitized] = timestamp_str
         # Convert the EXIF data back to bytes
         exif_bytes = piexif.dump(exif_dict)
 
