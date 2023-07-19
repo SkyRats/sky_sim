@@ -27,11 +27,11 @@ Reload the path with:
 . ~/.profile
 ```
 
-### 3. Build ArduCopter
+### 3. Build ArduCopter for SITL
 From ardupilto directory:
 
 ```
-./waf configure --board CubeBlack
+./waf configure --board sitl           # software-in-the-loop simulator
 ./waf copter
 ```
 ### 4. Install MAVProxy
