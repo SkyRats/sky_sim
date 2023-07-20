@@ -1,7 +1,6 @@
 <?xml version="1.0"?> 
 <sdf version="1.5">
   <world name="default">
-  
     <physics type="ode">
       <ode>
         <solver>
@@ -20,7 +19,7 @@
       <max_step_size>0.0010</max_step_size>
     </physics>
 
-    <!-- <scene>
+    <scene>
       <sky>
         <clouds>
           <speed>12</speed>
@@ -28,13 +27,6 @@
       </sky>
       <ambient>0.4 0.4 0.4 1</ambient>
       <background>0.25 0.25 0.25 1</background>
-    </scene> -->
-    
-    <scene>
-      <sky></sky>
-      <ambient>0.95 0.95 0.95 1</ambient>
-      <background>0.3 0.3 0.3 1</background>
-      <shadows>false</shadows>
     </scene>
 
 
@@ -45,7 +37,7 @@
           <geometry>
             <plane>
               <normal>0 0 1</normal>
-              <size>500 500</size>
+              <size>5000 5000</size>
             </plane>
           </geometry>
           <surface>
@@ -57,8 +49,7 @@
             </friction>
           </surface>
         </collision>
-
-        <!-- <visual name="runway">
+        <visual name="runway">
           <pose>000 0 0.005 0 0 0</pose>
           <cast_shadows>false</cast_shadows>
           <geometry>
@@ -73,36 +64,15 @@
               <name>Gazebo/Runway</name>
             </script>
           </material>
-        </visual> -->
-
-        <!-- <visual name="aruco">
-          <pose>2 2 0.02 0 0 0</pose>
-          <cast_shadows>false</cast_shadows>
-          <geometry>
-            <plane>
-              <normal>0 0 1</normal>
-              <size>1 1</size>
-            </plane>
-          </geometry>
-          <material>
-            <script>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/aruco3</name>
-            </script>
-            <script>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/aruco3</name>
-            </script>
-          </material>
-        </visual> -->
+        </visual>
 
         <visual name="grass">
-          <pose>0 0 0.01 0 0 0</pose>
+          <pose>0 0 -0.1 0 0 0</pose>
           <cast_shadows>false</cast_shadows>
           <geometry>
             <plane>
               <normal>0 0 1</normal>
-              <size>500 500</size>
+              <size>5000 5000</size>
             </plane>
           </geometry>
           <material>
@@ -122,71 +92,50 @@
 
     <model name="iris">
       <include>
-        <uri>model://drone_with_camera_down</uri>
+        <uri>model://drone_with_camera</uri>
       </include>
-      <pose> 2 2 0.05 0 0 0</pose>
+      <pose> 7 0 1 0 0 3.14159</pose>
     </model>
-    
-    <!-- <model name="aruquinho">
-      <include>
-        <uri>model://aruco</uri>
-      </include>
-      <pose> 2 2 0 0 0 0</pose>
-    </model> -->
 
-    <!-- <model name="aruco3">
-      <include>
-        <uri>model://aruco</uri>
-      </include>
-      <pose> 3 0 0.02 0 0 0</pose>
-    </model> -->
+    <include>
+      <uri>model://../models/indoor_arena</uri>
+    </include>
 
-    <actor name="animated_box">
+   <actor name="animated_box">
         <link name="box_link">
           <visual name="visual">
+            <material>
+             <ambient>0.1 0.1 0.1 1</ambient>
+               <diffuse>1 0 0 1</diffuse> <!-- Red color -->
+                <specular>0 0 0 0</specular>
+               <emissive>0 0 0 1</emissive>
+        </material>
             <geometry>
-            <plane>
-              <normal>0 0 1</normal>
-              <size>0.5 0.5</size>
-            </plane>
-          </geometry>
-          <material>
-            <script>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/aruco3</name>
-            </script>
-          </material>
+              <box>
+                <size>0.05 .1 1</size>
+              </box>
+            </geometry>
           </visual>
         </link>
         <script>
           <loop>true</loop>
           <auto_start>true</auto_start>
-          <trajectory id="0" type="circle">
+          <trajectory id="0" type="square">
              <waypoint>
                 <time>0.0</time>
-                <pose>-.5 0 .5 0 0 0</pose>
+                <pose>1 -4.75 1.5 0 0 0</pose>
              </waypoint>
              <waypoint>
-                <time>9.0</time>
-                <pose>0 -.5 .5 0 0 1.57</pose>
+                <time>8.0</time>
+                <pose>1 -2.75 1.5 0 0 0</pose>
              </waypoint>
              <waypoint>
-                <time>18.0</time>
-                <pose>.5 0 .5 0 0 3.14</pose>
-             </waypoint>
-             <waypoint>
-                <time>27.0</time>
-                <pose>0 .5 .5 0 0 4.71</pose>
-             </waypoint>
-             <waypoint>
-                <time>36.0</time>
-                <pose>-.5 0 .5 0 0 6.28</pose>
+                <time>16.0</time>
+                <pose>1 -4.5 1.5 0 0 0</pose>
              </waypoint>
           </trajectory>
         </script>
       </actor>
-
-      
 
   </world>
 </sdf>
