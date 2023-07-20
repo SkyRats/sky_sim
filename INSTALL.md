@@ -69,3 +69,41 @@ To run with a console and a map, use:
 ```
 sim_vehicle.py --console --map
 ```
+
+## Installing QGroundControl
+
+Open a terminal and enter:
+
+```
+sudo usermod -a -G dialout $USER
+sudo apt-get remove modemmanager -y
+sudo apt install gstreamer1.0-plugins-bad gstreamer1.0-libav gstreamer1.0-gl -y
+sudo apt install libqt5gui5 -y
+sudo apt install libfuse2 -y
+```
+
+Logout and login again to enable the change to user permissions (Click on the power icon located in the top-right corner of the screen and then Log Out)
+
+Now, click on this link to install the QGroundControl.AppImage
+https://d176tv9ibo4jno.cloudfront.net/latest/QGroundControl.AppImage
+
+Move it to the directory of your preference and inside this repository enter:
+
+```
+chmod +x ./QGroundControl.AppImage
+```
+
+## SITL with QGroundControl
+
+To run QGroundControl, go to the directory with the QGroundControl.AppImage file and enter:
+
+```
+./QGroundControl.AppImage
+```
+
+In another terminal, go to the `ardupilot/ArduCopter` directory and run the SITL:
+
+```
+sim_vehicle.py 
+```
+
