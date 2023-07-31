@@ -2,7 +2,7 @@
     <!-- vim: set ft=xml noet : -->
     <!-- base node launch file-->
 
-    <arg name="fcu_url" default="udp://127.0.0.1:14551@"/>
+    <arg name="fcu_url" default="udp://127.0.0.1:14550@14555"/>
     <arg name="gcs_url" default="" />
     <arg name="mavros_ns" default="/" />
     <arg name="tgt_system" default="1" />
@@ -15,8 +15,8 @@
     <arg name="respawn_mavros" default="false" />
 
     <node pkg="mavros" type="mavros_node" name="mavros" required="$(eval not respawn_mavros)" clear_params="true" output="$(arg log_output)" respawn="$(arg respawn_mavros)" ns="$(arg mavros_ns)">
-        <param name="fcu_url" value="$(arg fcu_url)" />
-        <param name="gcs_url" value="$(arg gcs_url)" />
+        <param name="fcu_url" value="udp://127.0.0.1:14551@" />
+        <param name="gcs_url" value="" />
         <param name="target_system_id" value="$(arg tgt_system)" />
         <param name="target_component_id" value="$(arg tgt_component)" />
         <param name="fcu_protocol" value="$(arg fcu_protocol)" />

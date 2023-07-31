@@ -1,13 +1,9 @@
-import rospy
-from sensor_msgs.msg import Image
 import cv2
 import time
 import numpy as np
 from cv2 import aruco
 from dronekit import connect, VehicleMode
 from pymavlink import mavutil
-from cv_bridge import CvBridge 
-import argparse
 
 
 class MarkerDetector:
@@ -69,9 +65,6 @@ class MarkerDetector:
 
                 marker_points = corners[0] # Vector with 4 points (x, y) for the corners
 
-                # Draw points in image
-                final_image = self.draw_marker(frame, marker_points)
-
                 # Pose estimation
                 pose = self.pose_estimation(marker_points, self.marker_size, self.np_camera_matrix, self.np_dist_coeff)
 
@@ -97,29 +90,10 @@ class MarkerDetector:
                 # Check for the closest target
                 if z < closest_dist:
                     closest_dist = z
-                    closest_target = [x, y, z, x_ang, y_ang, payload, final_image]
+                    closest_target = [x, y, z, x_ang, y_ang, payload]
             
             return closest_target
         return None
-    
-    def draw_marker(self, frame, points):
-        topLeft, topRight, bottomRight, bottomLeft = points
-
-        # Marker corners
-        tR = (int(topRight[0]), int(topRight[1]))
-        bR = (int(bottomRight[0]), int(bottomRight[1]))
-        bL = (int(bottomLeft[0]), int(bottomLeft[1]))
-        tL = (int(topLeft[0]), int(topLeft[1]))
-
-        # Find the Marker center
-        cX = int((tR[0] + bL[0]) / 2.0)
-        cY = int((tR[1] + bL[1]) / 2.0)
-
-        # Draw rectangle and circle
-        rect = cv2.rectangle(frame, tL, bR, (0, 0, 255), 2)
-        final = cv2.circle(rect, (cX, cY), radius=4, color=(0, 0, 255), thickness=-1)
-
-        return final
 
 
 class PrecLand:
@@ -131,23 +105,8 @@ class PrecLand:
         # Marker detector object
         self.detector = MarkerDetector(target_type, target_size, camera_info)
 
-        # ROS node
-        rospy.init_node('drone_node', anonymous=False)
+        self.cap = cv2.VideoCapture(2)
 
-        # Bridge ros-opencv
-        self.bridge_object = CvBridge()
-
-        # Post detection image publisher
-        self.newimg_pub = rospy.Publisher('camera/colour/image_new', Image, queue_size=10)
-        self.cam = Image()
-
-        try:
-            print("Criando subscriber...")
-            self.subscriber = rospy.Subscriber('/webcam/image_raw', Image, self.msg_receiver)
-        except:
-            print('Erro ao criar subscriber!')
-
-        self.teste = []
 
     def send_land_message(self, x_ang,y_ang,dist_m,time=0):
         msg = vehicle.message_factory.landing_target_encode(
@@ -161,85 +120,24 @@ class PrecLand:
             0,
         )
         vehicle.send_mavlink(msg)
-        print("Mensagem enviada")
 
     #-- Callback
     def msg_receiver(self, message):
 
-        # Bridge de ROS para CV
-        cam = self.bridge_object.imgmsg_to_cv2(message,"bgr8")
-        frame = cam
+        frame = message
 
         # Look for the closest target in the frame
         closest_target = self.detector.aruco_detection(frame)
 
         if closest_target is not None and self.vehicle.mode == 'LAND':
             
-            
-            x, y, z, x_ang, y_ang, payload, draw_img = closest_target
-
+            x, y, z, x_ang, y_ang, payload = closest_target
+                
             # times = time.time()*1e6
             dist = float(z)/100
             self.send_land_message(x_ang, y_ang, dist)
 
-            # if str(time.time())[11] == '0':
-
-            #     # times = time.time()*1e6
-            #     dist = float(z)/100
-
-            #     self.teste = closest_target
-            #     self.send_land_message(x_ang, y_ang, dist)
-            #     print(x)
-            # else:
-            #     if len(self.teste) > 0:
-            #         self.send_land_message(self.teste[3], self.teste[4], float(self.teste[2])/100)
-            #         print(self.teste[0])
-
-            
-
             print(f'MARKER POSITION: x = {x} | y = {y} | z = {z} | x_ang = {round(x_ang, 2)} | y_ang = {round(y_ang, 2)} | ID = {payload}')
-            
-
-            # Publish image with target identified
-            ros_img = self.bridge_object.cv2_to_imgmsg(draw_img, 'bgr8')
-            self.newimg_pub.publish(ros_img)
-
-            # # Check if land operation is complete
-            # if dist < 0.8:
-            #     print("LAND complete, shutting down")
-            #     # rospy.signal_shutdown()
-            #     sys.exit()
-            #     return
-
-
-# Function to arm and then takeoff to a user specified altitude
-def arm_and_takeoff(aTargetAltitude):
-
-    print("Basic pre-arm checks")
-    # Don't let the user try to arm until autopilot is ready
-    while not vehicle.is_armable:
-        print(" Waiting for vehicle to initialise...")
-        time.sleep(1)
-            
-    print("Arming motors")
-    # Copter should arm in GUIDED mode
-    vehicle.mode    = VehicleMode("GUIDED")
-    vehicle.armed   = True
-
-    while not vehicle.armed:
-        print(" Waiting for arming...")
-        time.sleep(1)
-
-    print("Taking off!")
-    vehicle.simple_takeoff(aTargetAltitude) # Take off to target altitude
-
-    # Check that vehicle has reached takeoff altitude
-    while True:
-        print(" Altitude: ", vehicle.location.global_relative_frame.alt)
-        #Break and return from function just below target altitude.        
-        if vehicle.location.global_relative_frame.alt >= aTargetAltitude*0.95: 
-            print(f"Reached target altitude {vehicle.location.global_relative_frame.alt}")
-        break
 
 
 if __name__ == '__main__':
@@ -247,14 +145,14 @@ if __name__ == '__main__':
     #-- SETUP
 
     # Target size in cm
-    marker_size = 50
+    marker_size = 15
 
     # Camera infos
-    camera_matrix = [[467.74270306499267, 0.0, 320.5],
-                    [0.0, 467.74270306499267, 240.5],
-                    [0.0, 0.0, 1.0]]
+    camera_matrix = [[782.46731034, 0., 409.07843314], 
+                     [0., 649.49851527, 115.63433423], 
+                     [0., 0., 1.]]
 
-    dist_coeff = [0.0, 0.0, 0.0, 0.0, 0] # Camera distortion matrix
+    dist_coeff = [0.07934446, -0.48204468, -0.00404468, 0.0041296, 0.83617513] # Camera distortion matrix
     res = (640, 480) # Camera resolution in pixels
     fov = (1.2, 1.1) # Camera FOV
 
@@ -263,13 +161,9 @@ if __name__ == '__main__':
 
     #-- DRONEKIT
 
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--connect', default = '127.0.0.1:14550')
-    args = parser.parse_args()
-
     #-- Connect to the vehicle
     print('Connecting...')
-    vehicle = connect(args.connect)
+    vehicle = connect("/dev/ttyUSB0", wait_ready=False, baud=921600)
 
     #-- Check vehicle status
     print(f"Mode: {vehicle.mode.name}")
@@ -294,27 +188,14 @@ if __name__ == '__main__':
     # vehicle.parameters['LAND_REPOSITION']   = 0 # !!!!!! ONLY FOR SITL IF NO RC IS CONNECTED
     # print("Parâmtros ok!")
 
-    # arm_and_takeoff(10)
-    # print("Take off complete")
-    # time.sleep(10)
-
     if vehicle.mode != 'LAND':
         vehicle.mode = VehicleMode('LAND')
         while vehicle.mode != 'LAND':
             time.sleep(1)
         print('vehicle in LAND mode')
 
-    # if vehicle.mode != 'LOITER':
-    #     vehicle.mode = VehicleMode('LOITER')
-    #     while vehicle.mode != 'LOITER':
-    #         time.sleep(1)
-    #     print('vehicle in LOITER mode')
-
-    print("Going for precision loiter...")
+    print("Going for precision landing...")
     precision_landing = PrecLand(vehicle, 'aruco', marker_size, camera)
-    rospy.spin()
 
     print("END")
     vehicle.close()
-
-

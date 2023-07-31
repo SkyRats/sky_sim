@@ -3,7 +3,7 @@
 import rospy
 from mavros_msgs.srv import SetMode, CommandBool, CommandTOL, ParamSet
 from mavros_msgs.srv import CommandTOLRequest, CommandLongRequest, CommandLong, CommandBoolRequest
-from mavros_msgs.msg import State, ExtendedState, ParamValue, PositionTarget
+from mavros_msgs.msg import State, ExtendedState, ParamValue, PositionTarget, LandingTarget
 import time
 from geometry_msgs.msg import PoseStamped, TwistStamped
 import numpy as np
@@ -35,7 +35,6 @@ class MAV2():
         self.set_mode_srv = rospy.ServiceProxy('mavros/set_mode', SetMode)
         self.param_set_srv = rospy.ServiceProxy('/mavros/param/set', ParamSet)
         self.command_client = rospy.ServiceProxy("mavros/cmd/command", CommandLong)
-
     
         ############### Publishers ##############
         self.local_position_pub = rospy.Publisher('/mavros/setpoint_position/local', PoseStamped, queue_size = 20)
@@ -289,8 +288,9 @@ class MAV2():
 if __name__ == '__main__':
     rospy.init_node('mavbase2')
     mav = MAV2()
-    mav.takeoff(0.5)
-    rospy.sleep(5)
+    mav.takeoff(8)
+    rospy.spin()
+    # rospy.sleep(5)
     #import tf
     #listener = tf.TransformListener()
     #while not rospy.is_shutdown():
@@ -301,10 +301,10 @@ if __name__ == '__main__':
     #    except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException):
     #        continue
     #mav.change_auto_speed(0.25)
-    import math
+    #import math
     #mav.go_to_local(1,1,0.5,yaw=math.pi/2, sleep_time=10)
-    mav.land()
-    rospy.sleep(10)
+    #mav.land()
+    #rospy.sleep(10)
     #mav.takeoff(1.2)
     #rospy.sleep(10)
     #mav.go_to_local(0,0,1.2,yaw=math.pi/2,sleep_time=15)
