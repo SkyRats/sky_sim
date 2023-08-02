@@ -27,22 +27,17 @@ class Mapping():
         self.quantidade_fotos = 0
         self.rate = rospy.Rate(0.769)
         self.global_pose = NavSatFix()
-
-        #subscribers
+        self.capture = cv2.VideoCapture(0)
         self.global_position_sub = rospy.Subscriber('/mavros/global_position/global', NavSatFix, self.global_callback)
-        self.cam_sub = rospy.Subscriber('/webcam/image_raw', Image, self.cam_callback)
+        #self.cam_sub = rospy.Subscriber('/webcam/image_raw', Image, self.cam_callback)
 
-    def global_callback(self, global_data):
-
-        self.global_pose = global_data
     
-
-    def cam_callback(self, message):
-
-        self.cam_frame = self.bridge_object.imgmsg_to_cv2(message, "bgr8")                    
-            
+    def global_callback(self, message):
+        self.global_pose = message
+        succes, self.cam_frame = self.capture.read()                  
+        self.cam_frame = cv2.resize(self.cam_frame, (960,540))
         print("cheguei")
-        frame = self.cam_frame
+        #frame = self.cam_frame
         #print(frame)
         #cv2.imshow("frame")
         rospy.loginfo("Message received")
