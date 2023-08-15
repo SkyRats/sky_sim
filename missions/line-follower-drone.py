@@ -141,8 +141,10 @@ class image_converter:
 
                 setpoint_.coordinate_frame = PositionTarget.FRAME_BODY_NED
                 
-                setpoint_.velocity.x = vel_setpoint_.x
-                setpoint_.velocity.y = vel_setpoint_.y
+                # setpoint_.velocity.x = vel_setpoint_.x
+                # setpoint_.velocity.y = vel_setpoint_.y
+                setpoint_.velocity.x = 0
+                setpoint_.velocity.y = 0
                 setpoint_.velocity.z = 0
 
                 setpoint_.yaw = yaw_setpoint_
