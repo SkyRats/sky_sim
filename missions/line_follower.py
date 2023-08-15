@@ -26,6 +26,8 @@ class image_converter:
 
         self.setpoint_pub_ = rospy.Publisher('mavros/setpoint_raw/local', PositionTarget, queue_size=10)
 
+        # rospy.Subscriber('mavros/local_position/pose', PoseStamped, self.dronePosCallback)
+
 
         self.Kp = 0.112                 # Ku=0.14 T=6. PID: p=0.084,i=0.028,d=0.063. PD: p=0.112, d=0.084/1. P: p=0.07
         self.Ki = 0
