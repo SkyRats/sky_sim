@@ -22,7 +22,7 @@ class image_converter:
         self.pub_error = rospy.Publisher('error', Int16, queue_size=10)
         self.pub_angle = rospy.Publisher('angle', Int16, queue_size=10)
         self.bridge = CvBridge()
-        self.image_sub = rospy.Subscriber('/webcam/image_raw', Image, self.callback)
+        # self.image_sub = rospy.Subscriber('/webcam/image_raw', Image, self.callback)
 
         self.setpoint_pub_ = rospy.Publisher('mavros/setpoint_raw/local', PositionTarget, queue_size=10)
 
@@ -50,14 +50,15 @@ class image_converter:
         self.start = 0.0
         self.stop = 0.0
         self.velocity = 0.5
+        self.capture = cv2.VideoCapture(0)
 
         self.drone_pos_ = Point()
 
 
     def line_detect(self, cv_image):
- 
-        lower_mask = np.array((86, 85, 56))
-        upper_mask = np.array( (128, 255, 255))
+
+        lower_mask = np.array([ 69, 69, 37])
+        upper_mask = np.array(  [ 157, 255, 255])
         mask = cv2.inRange(cv_image, lower_mask, upper_mask)
         kernel = np.ones((3, 3), np.uint8)
         mask = cv2.erode(mask, kernel, iterations=5)
@@ -140,8 +141,10 @@ class image_converter:
 
                 setpoint_.coordinate_frame = PositionTarget.FRAME_BODY_NED
                 
-                setpoint_.velocity.x = vel_setpoint_.x
-                setpoint_.velocity.y = vel_setpoint_.y
+                # setpoint_.velocity.x = vel_setpoint_.x
+                # setpoint_.velocity.y = vel_setpoint_.y
+                setpoint_.velocity.x = 0
+                setpoint_.velocity.y = 0
                 setpoint_.velocity.z = 0
 
                 setpoint_.yaw = yaw_setpoint_
@@ -220,6 +223,7 @@ class image_converter:
 
     # Zoom-in the image
     def zoom(self, cv_image, scale):
+        if cv_image is None: return None
         height, width, _ = cv_image.shape
         # print(width, 'x', height)
         # prepare the crop
@@ -259,12 +263,30 @@ class image_converter:
         # cv2.imshow("mask", mask)
         cv2.waitKey(1) & 0xFF
 
+    def detection_loop(self):
+        while self.capture.isOpened():
+            
+            ret, cv_image = self.capture.read()
+            if ret:
+                cv_image = self.zoom(cv_image, scale=20)
+                cv_image = cv2.add(cv_image, np.array([-50.0]))
+                # height, width, _ = cv_image.shape
+                # print(width, 'x', height)
+                # if self.takeoffed and (not self.landed):
+                cv_image_hsv = cv2.cvtColor(cv_image, cv2.COLOR_BGR2HSV)
+                self.line_detect(cv_image_hsv)
+
+            else:
+                break
+        
+
 
 def main():
     rospy.init_node('image_converter', anonymous=True)
     ic = image_converter()
     time.sleep(3)
     try:
+        ic.detection_loop()
         rospy.spin()
     except KeyboardInterrupt:
         print("Shutting down")
