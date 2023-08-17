@@ -15,10 +15,9 @@ class MarkerDetector:
 
         self.target_type = target_type
         self.marker_size = target_size
-
-
+        self.mode = "Searching"
         if self.target_type == 'aruco':
-            self.dictionary = aruco.getPredefinedDictionary(cv2.aruco.DICT_5X5_1000)
+            self.dictionary = aruco.getPredefinedDictionary(cv2.aruco.DICT_4X4_1000)
             self.parameters =  aruco.DetectorParameters()
             self.detector = aruco.ArucoDetector(self.dictionary, self.parameters)
 
@@ -36,7 +35,7 @@ class MarkerDetector:
 
         self.horizontal_fov = camera_info[3][0]
         self.vertical_fov = camera_info[3][1]
-        self.tracker = cv2.TrackerMIL.create()
+
 
     def pose_estimation(self, corners, marker_size, mtx, distortion):
         '''
@@ -70,36 +69,11 @@ class MarkerDetector:
             for corners in markerCorners: # For each Aruco
 
                 marker_points = corners[0] # Vector with 4 points (x, y) for the corners
-
                 # Draw points in image
                 final_image = self.draw_marker(frame, marker_points)
-
-                # Pose estimation
-                pose = self.pose_estimation(marker_points, self.marker_size, self.np_camera_matrix, self.np_dist_coeff)
-
-                rvec, tvec = pose
-
-                # 3D pose estimation vector
-                x = round(tvec[0][0], 2)
-                y = round(tvec[1][0], 2)
-                z = round(tvec[2][0], 2)
-
-                x_sum = marker_points[0][0] + marker_points[1][0] + marker_points[2][0] + marker_points[3][0]
-                y_sum = marker_points[0][1] + marker_points[1][1] + marker_points[2][1] + marker_points[3][1]
-
-                x_avg = x_sum / 4
-                y_avg = y_sum / 4
-
-                x_ang = (x_avg - self.horizontal_res*0.5)*self.horizontal_fov/self.horizontal_res
-                y_ang = (y_avg - self.vertical_res*0.5)*self.vertical_fov/self.vertical_res
-
-                payload = markerIds[i][0]
+                #cv2.imshow('detected', final_image)
                 i += 1
                 
-                # Check for the closest target
-                if z < closest_dist:
-                    closest_dist = z
-                    closest_target = [x, y, z, x_ang, y_ang, payload, final_image]
             
             return markerCorners, final_image
         return None
@@ -120,9 +94,10 @@ class MarkerDetector:
 
         # Draw rectangle and circle
         rect = cv2.rectangle(frame, tL, bR, (0, 0, 255), 2)
-        final = cv2.circle(rect, (cX, cY), radius=4, color=(0, 0, 255), thickness=-1)
-        bbox = [topLeft[0], topLeft[1], w, h]
-        
+        circle = cv2.circle(rect, (cX, cY), radius=4, color=(0, 0, 255), thickness=-1)
+        final = cv2.putText(circle,"mode: " + self.mode,(20,20), cv2.FONT_HERSHEY_SIMPLEX,1, (255, 255, 255), 2, cv2.LINE_AA)        
+        print(topLeft[1])
+        self.goal = [topLeft[0]+ w/2,topLeft[1]+h/2]
 
         return final
 
@@ -138,19 +113,8 @@ class Centralize:
 
         # ROS node
         rospy.init_node('drone_node', anonymous=False)
-
-        # Bridge ros-opencv
-        self.bridge_object = CvBridge()
-
-        # Post detection image publisher
-        self.newimg_pub = rospy.Publisher('camera/colour/image_new', Image, queue_size=10)
-        self.cam = Image()
-
-        try:
-            print("Criando subscriber...")
-            self.subscriber = rospy.Subscriber('/webcam/image_raw', Image, self.msg_receiver)
-        except:
-            print('Erro ao criar subscriber!')
+        self.detector.mode = "Searching"
+        self.cap = cv2.VideoCapture(0)
 
 
     def move_drone_with_velocity(self, vx, vy, vz, duration):
@@ -179,7 +143,7 @@ class Centralize:
             # Calculate the error between the marker center and the image center
             image_center = np.array([frame.shape[1] / 2, frame.shape[0] / 2])
             error = marker_center - image_center
-
+            print(error)
             # Calculate the desired velocity commands (lateral and forward) using PID controllers
             vx = +pid_x(error[1])  # Drone moves in the opposite direction to align with the marker's center (left/right)
             vy = -pid_y(error[0])
@@ -193,33 +157,34 @@ class Centralize:
 
 
     #-- Callback
-    def msg_receiver(self, message):
+    def detection_loop(self):
 
-        # Bridge de ROS para CV
-        cam = self.bridge_object.imgmsg_to_cv2(message,"bgr8")
-        frame = cam
+        while self.cap.isOpened():
+            #frame = self.bridge_object.imgmsg_to_cv2(message,"bgr8")
+            success,frame = self.cap.read()
+            #frame = cv2.flip(frame,1)
+            #cv2.imshow("frame", frame)
+            # Look for the closest target in the frame
+                      
+            aruco = self.detector.aruco_detection(frame)
+            if aruco is not None:
+                print("cheguei")
+                self.detector.mode = "Tracking"
+                corners, draw_img = aruco
+                self.visual_servoing_control(corners,frame)
 
-        # Look for the closest target in the frame
-        aruco = self.detector.aruco_detection(frame)
+            k = cv2.waitKey(30) & 0xff
+            if k == 27:
+                break
 
-        if aruco is not None and self.vehicle.mode == 'GUIDED':
-            
-            corners, draw_img = aruco
-                
-
-            self.visual_servoing_control(corners, frame)
-
-            # Publish image with target identified
-            ros_img = self.bridge_object.cv2_to_imgmsg(draw_img, 'bgr8')
-            self.newimg_pub.publish(ros_img)
-
-
+        self.cap.release()
+        cv2.destroyAllWindows()
 if __name__ == '__main__':
 
     #-- SETUP
 
     # Target size in cm
-    marker_size = 50
+    marker_size = 20
 
     # Camera infos
     camera_matrix = [[467.74270306499267, 0.0, 320.5],
@@ -227,7 +192,7 @@ if __name__ == '__main__':
                     [0.0, 0.0, 1.0]]
 
     dist_coeff = [0.0, 0.0, 0.0, 0.0, 0] # Camera distortion matrix
-    res = (640, 480) # Camera resolution in pixels
+    res = (640, 512) # Camera resolution in pixels
     fov = (1.2, 1.1) # Camera FOV
 
     camera = [camera_matrix, dist_coeff, res, fov]
@@ -265,6 +230,7 @@ if __name__ == '__main__':
     # vehicle.parameters['PLND_TYPE']         = 1 # Mavlink landing backend
     # vehicle.parameters['LAND_REPOSITION']   = 0 # !!!!!! ONLY FOR SITL IF NO RC IS CONNECTED
     # print("Parâmtros ok!")
+        #ros_img = self.bridge_object.cv2_to_imgmsg(draw_img, 'bgr8')
 
     # arm_and_takeoff(10)
     # print("Take off complete")
@@ -278,7 +244,6 @@ if __name__ == '__main__':
 
     print("Going for precision landing...")
     centralize = Centralize(vehicle, 'aruco', marker_size, camera)
-    rospy.spin()
-
+    centralize.detection_loop()
     print("END")
     vehicle.close()
