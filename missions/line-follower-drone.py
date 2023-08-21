@@ -292,5 +292,6 @@ def main():
         print("Shutting down")
         cv2.destroyAllWindows()
 
+
 if __name__ == '__main__':
     main()
