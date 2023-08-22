@@ -118,16 +118,16 @@ class Centralize:
 
 
     def move_drone_with_velocity(self, vx, vy, vz, duration):
-        msg = vehicle.message_factory.set_position_target_local_ned_encode(
+        msg = self.vehicle.message_factory.set_position_target_local_ned_encode(
             0, 0, 0,  # time_boot_ms, target system, target component
-            mavutil.mavlink.MAV_FRAME_LOCAL_NED,  # frame
+            mavutil.mavlink.MAV_FRAME_BODY_NED,  # frame
             0b0000111111000111,  # type_mask (ignore everything except position and yaw)
             0, 0, 0,  # x, y, z positions (not used)
             vx, vy, vz,  # x, y, z velocity in m/s
             0, 0, 0,  # x, y, z acceleration (not used)
             0, 0)  # yaw, yaw_rate (not used)
 
-        vehicle.send_mavlink(msg)
+        self.vehicle.send_mavlink(msg)
         
     
     def visual_servoing_control(self,corners, frame):     
