@@ -117,18 +117,47 @@ class Centralize:
         self.cap = cv2.VideoCapture(0)
 
 
-    def move_drone_with_velocity(self, vx, vy, vz, duration):
-        msg = self.vehicle.message_factory.set_position_target_local_ned_encode(
-            0, 0, 0,  # time_boot_ms, target system, target component
-            mavutil.mavlink.MAV_FRAME_BODY_NED,  # frame
-            0b0000111111000111,  # type_mask (ignore everything except position and yaw)
-            0, 0, 0,  # x, y, z positions (not used)
-            vx, vy, vz,  # x, y, z velocity in m/s
-            0, 0, 0,  # x, y, z acceleration (not used)
-            0, 0)  # yaw, yaw_rate (not used)
-
-        self.vehicle.send_mavlink(msg)
-        
+    def move_drone_with_velocity(self, velocity_x, velocity_y, velocity_z):
+        """
+        Move vehicle in direction based on specified velocity vectors.
+        """
+        msg = vehicle.message_factory.set_position_target_global_int_encode(
+            0,       # time_boot_ms (not used)
+            0, 0,    # target system, target component
+            mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT_INT, # frame
+            0b0000111111000111, # type_mask (only speeds enabled)
+            0, # lat_int - X Position in WGS84 frame in 1e7 * meters
+            0, # lon_int - Y Position in WGS84 frame in 1e7 * meters
+            0, # alt - Altitude in meters in AMSL altitude(not WGS84 if absolute or relative)
+            # altitude above terrain if GLOBAL_TERRAIN_ALT_INT
+            velocity_x, # X velocity in NED frame in m/s
+            velocity_y, # Y velocity in NED frame in m/s
+            velocity_z, # Z velocity in NED frame in m/s
+            0, 0, 0, # afx, afy, afz acceleration (not supported yet, ignored in GCS_Mavlink)
+            0, 0)    # yaw, yaw_rate (not supported yet, ignored in GCS_Mavlink)
+        vehicle.send_mavlink(msg)
+    
+    def move_drone_with_velocity_with_duration(self, velocity_x, velocity_y, velocity_z, duration):
+        """
+        Move vehicle in direction based on specified velocity vectors.
+        """
+        msg = vehicle.message_factory.set_position_target_global_int_encode(
+            0,       # time_boot_ms (not used)
+            0, 0,    # target system, target component
+            mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT_INT, # frame
+            0b0000111111000111, # type_mask (only speeds enabled)
+            0, # lat_int - X Position in WGS84 frame in 1e7 * meters
+            0, # lon_int - Y Position in WGS84 frame in 1e7 * meters
+            0, # alt - Altitude in meters in AMSL altitude(not WGS84 if absolute or relative)
+            # altitude above terrain if GLOBAL_TERRAIN_ALT_INT
+            velocity_x, # X velocity in NED frame in m/s
+            velocity_y, # Y velocity in NED frame in m/s
+            velocity_z, # Z velocity in NED frame in m/s
+            0, 0, 0, # afx, afy, afz acceleration (not supported yet, ignored in GCS_Mavlink)
+            0, 0)    # yaw, yaw_rate (not supported yet, ignored in GCS_Mavlink)
+        for i in range (0,duration):
+            vehicle.send_mavlink(msg)
+            time.sleep(0.25)
     
     def visual_servoing_control(self,corners, frame):     
 
@@ -153,7 +182,7 @@ class Centralize:
             duration = 0.5 # Duration of each movement command (in seconds)
 
             # Move the drone with velocity commands
-            self.move_drone_with_velocity(vx, vy, vz, duration)
+            self.move_drone_with_velocity(vx, vy, vz)
 
 
     #-- Callback
@@ -163,7 +192,7 @@ class Centralize:
             #frame = self.bridge_object.imgmsg_to_cv2(message,"bgr8")
             success,frame = self.cap.read()
             #frame = cv2.flip(frame,1)
-            #cv2.imshow("frame", frame)
+            cv2.imshow("frame", frame)
             # Look for the closest target in the frame
                       
             aruco = self.detector.aruco_detection(frame)
