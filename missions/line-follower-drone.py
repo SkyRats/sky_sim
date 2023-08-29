@@ -49,7 +49,7 @@ class image_converter:
         self.fly_time = 0.0
         self.start = 0.0
         self.stop = 0.0
-        self.velocity = 0.5
+        self.velocity = 0.1
         self.capture = cv2.VideoCapture(0)
 
         self.drone_pos_ = Point()
@@ -64,8 +64,8 @@ class image_converter:
         mask = cv2.erode(mask, kernel, iterations=5)
         mask = cv2.dilate(mask, kernel, iterations=9)
 
-        cv2.imshow("mask", mask)
-        cv2.waitKey(1) & 0xFF
+        # cv2.imshow("mask", mask)
+        # cv2.waitKey(1) & 0xFF
 
         contours_blk, _ = cv2.findContours(mask.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
         contours_blk = list(contours_blk)
@@ -119,14 +119,14 @@ class image_converter:
                 box = cv2.boxPoints(blackbox)
                 box = np.intp(box)
 
-                cv2.drawContours(cv_image, [box], 0, (0, 0, 255), 3)
+                # cv2.drawContours(cv_image, [box], 0, (0, 0, 255), 3)
 
-                cv2.putText(cv_image, "Angle: " + str(angle), (10, 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2,
-                            cv2.LINE_AA)
+                # cv2.putText(cv_image, "Angle: " + str(angle), (10, 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2,
+                #             cv2.LINE_AA)
 
-                cv2.putText(cv_image, "Error: " + str(error), (10, 240), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2,
-                            cv2.LINE_AA)
-                cv2.line(cv_image, (int(x_min), 200), (int(x_min), 250), (255, 0, 0), 3)
+                # cv2.putText(cv_image, "Error: " + str(error), (10, 240), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2,
+                #             cv2.LINE_AA)
+                # cv2.line(cv_image, (int(x_min), 200), (int(x_min), 250), (255, 0, 0), 3)
 
 
                 setpoint_ = PositionTarget()
@@ -141,11 +141,13 @@ class image_converter:
 
                 setpoint_.coordinate_frame = PositionTarget.FRAME_BODY_NED
                 
-                # setpoint_.velocity.x = vel_setpoint_.x
-                # setpoint_.velocity.y = vel_setpoint_.y
-                setpoint_.velocity.x = 0
-                setpoint_.velocity.y = 0
-                setpoint_.velocity.z = 0
+                setpoint_.velocity.x = vel_setpoint_.x
+                setpoint_.velocity.y = vel_setpoint_.y
+                # setpoint_.velocity.x = 0
+                # setpoint_.velocity.y = 0
+                
+
+
 
                 setpoint_.yaw = yaw_setpoint_
 
@@ -159,67 +161,6 @@ class image_converter:
                 err.data = error
                 self.pub_error.publish(err)
 
-        # if len(contours_blk) == 0 and self.was_line == 1 and self.line_back == 1:
-        #     twist = Twist()
-        #     twistStamped = TwistStamped()
-                
-        #     if self.line_side == 1:  # line at the right
-        #         twist.linear.y = -0.05
-        #         twistStamped.twist = twist
-        #         self.pub_vel.publish(twistStamped)
-        #     if self.line_side == -1:  # line at the left
-        #         twist.linear.y = 0.05
-        #         twistStamped.twist = twist
-        #         self.pub_vel.publish(twistStamped)
-        # cv2.imshow("mask", mask)
-        # cv2.waitKey(1) & 0xFF
-
-    # def land_detect(self, cv_image):
-    #     land_mask = cv2.cvtColor(cv_image, cv2.COLOR_BGR2HSV)
-    #     land_mask = cv2.GaussianBlur(land_mask, (21, 21), 0)
-    #     low_red = np.array([0, 64, 148])
-    #     up_red = np.array([19, 221, 229])
-    #     land_mask = cv2.inRange(land_mask, low_red, up_red)
-
-    #     _, contours_blk2, _ = cv2.findContours(land_mask.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-    #     contours_blk2.sort(key=cv2.minAreaRect)
-    #     # cv2.imshow("land mask", land_mask)
-    #     if len(contours_blk2) > 0 and cv2.contourArea(contours_blk2[0]) > 30000:
-    #         self.landing()
-
-    # Landing the drone
-    # def landing(self):
-    #     land = Empty()
-    #     self.pub_land.publish(land)
-    #     # self.takeoffed = 0
-    #     # self.stop = time.time()
-    #     # self.errorPlot()
-
-    # def isTakeoff(self, data):
-    #     time.sleep(3.5)
-    #     self.start = time.time()
-    #     self.takeoffed = 1
-    #     self.landed = 0
-
-    # def isLand(self, data):
-    #     self.landed = 1
-    #     self.takeoffed = 0
-    #     self.stop = time.time()
-    #     self.errorPlot()
-
-    # def errorPlot(self):
-    #     meanError = np.mean(self.error)
-    #     stdError = np.std(self.error)
-    #     meanAngle = np.mean(self.angle)
-    #     stdAngle = np.std(self.angle)
-    #     self.fly_time = self.stop - self.start
-    #     print("""
-    #   /*---------------------------------------------
-    #           meanError: %f[px],   stdError: %f[px]
-    #           meanAngle: %f[deg],   stdAngle: %f[deg]
-    #           Time: %f[sec], Velocity: %f[percent]
-    #   ---------------------------------------------*/
-    #   """ %(meanError, stdError, meanAngle, stdAngle, self.fly_time, self.velocity))
 
     # Zoom-in the image
     def zoom(self, cv_image, scale):
@@ -259,9 +200,9 @@ class image_converter:
         # cv2.putText(cv_image, "battery: " + str(self.battery) + "%", (570, 40), cv2.FONT_HERSHEY_SIMPLEX, 0.8,
         #             (255, 255, 0), 2, cv2.LINE_AA)
 
-        cv2.imshow("Image window", cv_image)
+        # cv2.imshow("Image window", cv_image)
         # cv2.imshow("mask", mask)
-        cv2.waitKey(1) & 0xFF
+        # cv2.waitKey(1) & 0xFF
 
     def detection_loop(self):
         while self.capture.isOpened():
