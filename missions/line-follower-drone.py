@@ -10,6 +10,7 @@ from mavros_msgs.msg import PositionTarget
 from std_msgs.msg import Int16
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge, CvBridgeError
+from tf2_msgs.msg import TFMessage
 
 import math
 
@@ -26,7 +27,7 @@ class image_converter:
 
         self.setpoint_pub_ = rospy.Publisher('mavros/setpoint_raw/local', PositionTarget, queue_size=10)
 
-        # rospy.Subscriber('mavros/local_position/pose', PoseStamped, self.dronePosCallback)
+        rospy.Subscriber('/tf', TFMessage, self.callback)
 
 
         self.Kp = 0.112                 # Ku=0.14 T=6. PID: p=0.084,i=0.028,d=0.063. PD: p=0.112, d=0.084/1. P: p=0.07
@@ -54,6 +55,14 @@ class image_converter:
 
         self.drone_pos_ = Point()
 
+
+    def callback(self, data):
+        for transform in data.transforms:
+            if transform.child_frame_id == "camera_link":
+                self.drone_pos_.x = transform.transform.translation.x
+                self.drone_pos_.y = transform.transform.translation.y
+                self.drone_pos_.z = transform.transform.translation.z
+                break
 
     def line_detect(self, cv_image):
 
@@ -145,6 +154,7 @@ class image_converter:
                 setpoint_.velocity.y = vel_setpoint_.y
                 # setpoint_.velocity.x = 0
                 # setpoint_.velocity.y = 0
+                setpoint_.position.z = self.drone_pos_.z
                 
 
 
