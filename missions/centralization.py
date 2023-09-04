@@ -17,7 +17,7 @@ class MarkerDetector:
         self.marker_size = target_size
         self.mode = "Searching"
         if self.target_type == 'aruco':
-            self.dictionary = aruco.getPredefinedDictionary(cv2.aruco.DICT_4X4_1000)
+            self.dictionary = aruco.getPredefinedDictionary(cv2.aruco.DICT_5X5_700)
             self.parameters =  aruco.DetectorParameters()
             self.detector = aruco.ArucoDetector(self.dictionary, self.parameters)
 
@@ -117,53 +117,29 @@ class Centralize:
         self.cap = cv2.VideoCapture(0)
 
 
-    def move_drone_with_velocity(self, velocity_x, velocity_y, velocity_z):
+    def goto_position_target_local_ned(self,vx, vy, vz):
         """
-        Move vehicle in direction based on specified velocity vectors.
+        Send SET_POSITION_TARGET_LOCAL_NED command to request the vehicle fly to a specified
+        location in the North, East, Down frame.
         """
-        msg = vehicle.message_factory.set_position_target_global_int_encode(
+        msg = vehicle.message_factory.set_position_target_local_ned_encode(
             0,       # time_boot_ms (not used)
             0, 0,    # target system, target component
-            mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT_INT, # frame
-            0b0000111111000111, # type_mask (only speeds enabled)
-            0, # lat_int - X Position in WGS84 frame in 1e7 * meters
-            0, # lon_int - Y Position in WGS84 frame in 1e7 * meters
-            0, # alt - Altitude in meters in AMSL altitude(not WGS84 if absolute or relative)
-            # altitude above terrain if GLOBAL_TERRAIN_ALT_INT
-            velocity_x, # X velocity in NED frame in m/s
-            velocity_y, # Y velocity in NED frame in m/s
-            velocity_z, # Z velocity in NED frame in m/s
-            0, 0, 0, # afx, afy, afz acceleration (not supported yet, ignored in GCS_Mavlink)
+            mavutil.mavlink.MAV_FRAME_BODY_OFFSET_NED, # frame
+            0b110111000111, # type_mask (only positions enabled)
+            0, 0, 0,
+            vx, vy,vz, # x, y, z velocity in m/s  (not used)
+            0, 0, 0, # x, y, z acceleration (not supported yet, ignored in GCS_Mavlink)
             0, 0)    # yaw, yaw_rate (not supported yet, ignored in GCS_Mavlink)
+        # send command to vehicle
         vehicle.send_mavlink(msg)
     
-    def move_drone_with_velocity_with_duration(self, velocity_x, velocity_y, velocity_z, duration):
-        """
-        Move vehicle in direction based on specified velocity vectors.
-        """
-        msg = vehicle.message_factory.set_position_target_global_int_encode(
-            0,       # time_boot_ms (not used)
-            0, 0,    # target system, target component
-            mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT_INT, # frame
-            0b0000111111000111, # type_mask (only speeds enabled)
-            0, # lat_int - X Position in WGS84 frame in 1e7 * meters
-            0, # lon_int - Y Position in WGS84 frame in 1e7 * meters
-            0, # alt - Altitude in meters in AMSL altitude(not WGS84 if absolute or relative)
-            # altitude above terrain if GLOBAL_TERRAIN_ALT_INT
-            velocity_x, # X velocity in NED frame in m/s
-            velocity_y, # Y velocity in NED frame in m/s
-            velocity_z, # Z velocity in NED frame in m/s
-            0, 0, 0, # afx, afy, afz acceleration (not supported yet, ignored in GCS_Mavlink)
-            0, 0)    # yaw, yaw_rate (not supported yet, ignored in GCS_Mavlink)
-        for i in range (0,duration):
-            vehicle.send_mavlink(msg)
-            time.sleep(0.25)
     
     def visual_servoing_control(self,corners, frame):     
 
         # Initialize PID controllers for lateral and forward control
-        pid_x = PID(Kp=0.007, Ki=0.005, Kd=0.005, setpoint=0)
-        pid_y = PID(Kp=0.007, Ki=0.005, Kd=0.005, setpoint=0)
+        pid_x = PID(Kp=0.005, Ki=0.005, Kd=0.25, setpoint=0)
+        pid_y = PID(Kp=0.005, Ki=0.005, Kd=0.25, setpoint=0)
 
         if corners:
             # Assuming the first detected marker's center is our target
