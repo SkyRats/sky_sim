@@ -51,8 +51,8 @@
       <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
         <always_on>true</always_on>
         <update_rate>30</update_rate>
-        <cameraName>front_cam</cameraName>
-        <imageTopicName>image_raw</imageTopicName>
+        <cameraName>sky_vision/front_cam</cameraName>
+        <imageTopicName>img_raw</imageTopicName>
         <cameraInfoTopicName>camera_info</cameraInfoTopicName>
         <frameName>front_camera_link</frameName>
       </plugin>
@@ -116,8 +116,8 @@
       <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
         <always_on>true</always_on>
         <update_rate>30</update_rate>
-        <cameraName>down_cam</cameraName>
-        <imageTopicName>image_raw</imageTopicName>
+        <cameraName>sky_vision/down_cam</cameraName>
+        <imageTopicName>img_raw</imageTopicName>
         <cameraInfoTopicName>camera_info</cameraInfoTopicName>
         <frameName>camera_link</frameName>
       </plugin>

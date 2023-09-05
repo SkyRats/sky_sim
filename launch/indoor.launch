@@ -1,8 +1,7 @@
 <launch>
     <!-- vim: set ft=xml noet : -->
     <!-- base node launch file-->
-
-    <arg name="fcu_url" default="udp://127.0.0.1:14551@"/>
+    <arg name="fcu_url" default="udp://127.0.0.1:14550@"/>
     <arg name="gcs_url" default="" />
     <arg name="mavros_ns" default="/" />
     <arg name="tgt_system" default="1" />
