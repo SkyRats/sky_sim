@@ -1,0 +1,77 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="yellow_gate">
+    <static>true</static>
+    <link name="link">
+      <!-- Left Vertical Bar -->
+      <visual name="left_bar">
+        <pose>-0.7 0 0.5 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.1 0.1 1</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Yellow</name>
+          </script>
+        </material>
+      </visual>
+      <collision name="left_collision">
+        <pose>-0.7 0 0.5 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.1 0.1 1</size>
+          </box>
+        </geometry>
+      </collision>
+      <!-- Right Vertical Bar -->
+      <visual name="right_bar">
+        <pose>0.7 0 0.5 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.1 0.1 1</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Yellow</name>
+          </script>
+        </material>
+      </visual>
+      <collision name="right_collision">
+        <pose>0.7 0 0.5 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.1 0.1 1</size>
+          </box>
+        </geometry>
+      </collision>
+      <!-- Top Horizontal Bar -->
+      <visual name="top_bar">
+        <pose>0 0 1 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>1.5 0.1 0.1</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Yellow</name>
+          </script>
+        </material>
+      </visual>
+      <collision name="top_collision">
+        <pose>0 0 1 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>1.5 0.1 0.1</size>
+          </box>
+        </geometry>
+      </collision>
+    </link>
+  </model>
+</sdf>

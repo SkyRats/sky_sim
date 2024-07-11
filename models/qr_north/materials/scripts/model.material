@@ -1,0 +1,15 @@
+material qr_north/qr_north
+{
+    technique
+    {
+        pass
+        {
+            texture_unit
+            {
+                texture qr_north.png
+                filtering none
+                scale 1.0 1.0
+            }
+        }
+    }
+}
