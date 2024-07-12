@@ -1,0 +1,16 @@
+material street/street_FIRA
+{
+    technique
+    {
+        pass
+        {
+            texture_unit
+            {
+                texture street_FIRA.png
+                filtering none
+                scale 5.37 0.63
+            }
+        }
+    }
+}
+
