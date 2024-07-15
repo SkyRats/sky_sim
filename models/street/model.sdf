@@ -6,21 +6,20 @@
     <pose>0 0 1e-3 0 0 1.5707963267948966</pose>
         <geometry>
           <box>
-            <size>5.37 0.63 1e-3</size>
+            <size>5.37 0.2 1e-3</size>
           </box>
         </geometry>
       <visual name="visual_street">
         <cast_shadows>false</cast_shadows>
         <geometry>
           <box>
-            <size>5.37 0.63 1e-3</size>
+            <size>5.37 0.2 1e-3</size>
           </box>
         </geometry>
         <material>
           <script>
-            <uri>model://street/materials/scripts/</uri>
-            <uri>model://street/materials/textures/</uri>
-            <name>street_FIRA/street_FIRA</name>
+            <uri>model://street/materials/scripts/model.material</uri>
+            <name>street/street_FIRA</name>
           </script>
         </material>
       </visual>

@@ -6,11 +6,10 @@ material street/street_FIRA
         {
             texture_unit
             {
-                texture street_FIRA.png
+                texture ../textures/street_FIRA.png
                 filtering none
-                scale 5.37 0.63
+                scale 1.0 0.5
             }
         }
     }
 }
-
