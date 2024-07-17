@@ -126,8 +126,6 @@
       </include>
       <pose> 0 0 0.05 0 0 0</pose>
     </model>
-
-
     
     <model name="red_gate">
       <include>
@@ -135,37 +133,79 @@
       </include>
       <pose> 2 2 0.05 0 0 0</pose>
     </model>
-    
-    <model name="street">
+
+    <!-- ########## streets ########## -->
+
+    <model name="street_linha0">
+      <include>
+        <uri>model://street</uri>
+      </include>
+      <pose> 0 5.37 0.05 0 0 1.57</pose>
+    </model>!
+
+    <model name="street_linha2">
+      <include>
+        <uri>model://street</uri>
+      </include>
+      <pose> 0 1.8 0.05 0 0 1.57</pose> <!--melhorar posicao-->
+    </model>!
+
+    <model name="street_linha3">
       <include>
         <uri>model://street</uri>
       </include>
       <pose> 0 0 0.05 0 0 1.57</pose>
     </model>!
 
-    <!-- ########## QR CODES ########## -->
+    <model name="street_coluna0">
+      <include>
+        <uri>model://street</uri>
+      </include>
+      <pose> -2.785 2.785 0.05 0 0 0</pose>
+    </model>!
 
-    <!--TODO arrumar as posicoes dos qrs nesse teste-->
+    <model name="street_coluna1">
+      <include>
+        <uri>model://street</uri>
+      </include>
+      <pose> -1 2.785 0.05 0 0 0</pose>
+    </model>!
+
+    <model name="street_coluna2">
+      <include>
+        <uri>model://street</uri>
+      </include>
+      <pose> 1 2.785 0.05 0 0 0</pose>
+    </model>!
+
+    <model name="street_coluna3">
+      <include>
+        <uri>model://street</uri>
+      </include>
+      <pose> 2.785 2.785 0.05 0 0 0</pose>
+    </model>!
+    
+    <!-- ########## QR codes ########## -->
 
     <model name="qr_FIRA_teste_01">
       <include>
         <uri>model://qr_FIRA_teste</uri>
       </include>
-      <pose> -2.77 0 0.06 0 0 0</pose>
+      <pose> -2.785 0 0.06 0 0 0</pose>
     </model>
 
     <model name="qr_FIRA_teste_02">
       <include>
         <uri>model://qr_FIRA_teste</uri>
       </include>
-      <pose> -1.25 0 0.06 0 0 0</pose>
+      <pose> -1 0 0.06 0 0 0</pose>
     </model>
 
     <model name="qr_FIRA_teste_03">
       <include>
         <uri>model://qr_FIRA_teste</uri>
       </include>
-      <pose> 0.978667 0 0.06 0 0 0</pose>
+      <pose> 1 0 0.06 0 0 0</pose>
     </model>
 
     <model name="qr_FIRA_teste_04">
