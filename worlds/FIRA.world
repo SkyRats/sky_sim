@@ -127,6 +127,13 @@
       <pose> 0 0 0.05 0 0 0</pose>
     </model>
 
+    <model name="white_square">
+      <include>
+        <uri>model://white_square</uri>
+      </include>
+      <pose> 0 2.785 0.03 0 0 0</pose>
+    </model>
+
     <!-- ########## H's ########## -->
 
     <model name="red_H">
