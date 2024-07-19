@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<sdf version="1.5">
+    <model name="white_square">
+        <static>true</static>
+        <link name="white_square_link">
+            <pose>0 0 1e-3 0 0 1.5707963267948966</pose>
+            <visual name="visual_white_square">
+                <cast_shadows>false</cast_shadows>
+                <geometry><box><size>7 7 1e-3</size></box></geometry>
+                <material>
+                    <script>
+                        <uri>model://white_square/materials/scripts</uri>
+                        <uri>model://white_square/materials/textures</uri>
+                        <name>white_square/white_square</name>
+                    </script>
+                </material>
+            </visual>
+        </link>
+    </model>
+</sdf>

@@ -1,0 +1,15 @@
+material white_square/white_square
+{
+    technique
+    {
+        pass
+        {
+            texture_unit
+            {
+                texture white_square.png
+                filtering none
+                scale 1.0 1.0
+            }
+        }
+    }
+}
