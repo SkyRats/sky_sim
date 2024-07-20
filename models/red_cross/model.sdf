@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<sdf version="1.5">
+    <model name="red_cross">
+        <static>true</static>
+        <link name="red_cross_link">
+            <pose>0 0 1e-3 0 0 1.5707963267948966</pose>
+            <visual name="visual_red_cross">
+                <cast_shadows>false</cast_shadows>
+                <geometry><box><size>0.8 0.8 1e-3</size></box></geometry>
+                <material>
+                    <script>
+                        <uri>model://red_cross/materials/scripts</uri>
+                        <uri>model://red_cross/materials/textures</uri>
+                        <name>red_cross/red_cross</name>
+                    </script>
+                </material>
+            </visual>
+        </link>
+    </model>
+</sdf>
