@@ -1,0 +1,15 @@
+material qr_Victim_4/qr_Victim_4
+{
+    technique
+    {
+        pass
+        {
+            texture_unit
+            {
+                texture qr_Victim_4.png
+                filtering none
+                scale 1.0 1.0
+            }
+        }
+    }
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<sdf version="1.5">
+    <model name="qr_victim">
+        <static>true</static>
+        <link name="qr_victim_link">
+            <pose>0 0 1e-3 0 0 1.5707963267948966</pose>
+            <visual name="visual_qr_victim">
+                <cast_shadows>false</cast_shadows>
+                <geometry><box><size>0.2 0.2 1e-3</size></box></geometry>
+                <material>
+                    <script>
+                        <uri>model://qr_victim/materials/scripts</uri>
+                        <uri>model://qr_victim/materials/textures</uri>
+                        <name>qr_victim/qr_victim</name>
+                    </script>
+                </material>
+            </visual>
+        </link>
+    </model>
+</sdf>
