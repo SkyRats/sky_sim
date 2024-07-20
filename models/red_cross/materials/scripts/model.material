@@ -1,0 +1,15 @@
+material red_cross/red_cross
+{
+    technique
+    {
+        pass
+        {
+            texture_unit
+            {
+                texture red_cross.png
+                filtering none
+                scale 1.0 1.0
+            }
+        }
+    }
+}
