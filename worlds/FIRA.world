@@ -2317,16 +2317,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='qr_00'>
-        <pose>-2.785 5.37 0.06 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='qr_FIRA_teste::qr_FIRA_teste_link'>
-          <pose>-2.785 5.37 0.061 0 -0 1.5708</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
+
       <model name='qr_01'>
         <pose>-1 5.37 0.06 0 -0 0</pose>
         <scale>1 1 1</scale>
