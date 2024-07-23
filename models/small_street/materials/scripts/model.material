@@ -1,0 +1,17 @@
+material small_street/small_street
+{
+    technique
+    {
+        pass
+        {
+            texture_unit
+            {
+                texture ../textures/small_street.png
+                filtering none
+                tex_address_mode clamp
+                scale 1.0 1.0
+            }
+        }
+    }
+}
+

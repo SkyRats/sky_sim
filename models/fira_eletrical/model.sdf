@@ -14,7 +14,7 @@
         </inertia>
         <pose>0 0 0 0 -0 0</pose>
       </inertial>
-      <pose>0 0 0 0 -0 0</pose>
+      <pose>0 0 -0.011903 0 -0 0</pose>
       <gravity>0</gravity>
       <self_collide>0</self_collide>
       <kinematic>0</kinematic>
@@ -297,6 +297,56 @@
         </surface>
       </collision>
     </link>
+    <model name='qr_Victim_6'>
+      <static>1</static>
+      <link name='qr_Victim_6_link'>
+        <pose>0 0 0.001 0 -0 1.5708</pose>
+        <visual name='visual_qr_Victim_6'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.05 0.05 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://qr_Victim_6/materials/scripts</uri>
+              <uri>model://qr_Victim_6/materials/textures</uri>
+              <name>qr_Victim_6/qr_Victim_6</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>0.153877 -0.01017 0.942722 3.14159 1.55078 3.14159</pose>
+    </model>
+    <model name='qr_Victim_7'>
+      <static>1</static>
+      <link name='qr_Victim_7_link'>
+        <pose>0 0 0.001 0 -0 1.5708</pose>
+        <visual name='visual_qr_Victim_7'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.05 0.05 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://qr_Victim_7/materials/scripts</uri>
+              <uri>model://qr_Victim_7/materials/textures</uri>
+              <name>qr_Victim_7/qr_Victim_7</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-0.104629 -0.01271 0.855069 3.13255 -0.00487 -1.56498</pose>
+    </model>
     <static>1</static>
     <allow_auto_disable>1</allow_auto_disable>
   </model>
