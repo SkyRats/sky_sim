@@ -134,6 +134,7 @@ sim_vehicle.py -v ArduCopter -f gazebo-iris --console
 If the command is not found and the path can't be corrected, you might need to run the following command before running SITL:
 ```console
 cd ~/sky_ws/src/sky_base/ardupilot/Tools/autotest
+python3 sim_vehicle.py -v ArduCopter -f gazebo-iris --console
 ```
 
 - Launch Gazebo and ROS:
