@@ -3272,4 +3272,25 @@
       <pose>-3.44103 7.19812 0.493129 0 -0 0</pose>
     </model>
   </world>
+  
+  <model name='small_street_0'>
+  <static>1</static>
+  <link name='small_street::small_street_link'>
+    <visual name='visual_small_street'>
+      <cast_shadows>0</cast_shadows>
+      <geometry>
+        <box>
+          <size>0.5 0.2 0.001</size>
+        </box>
+      </geometry>
+      <material>
+        <script>
+          <uri>model://small_street/materials/scripts/model.material</uri>
+          <name>small_street/small_street</name>
+        </script>
+      </material>
+    </visual>
+  </link>
+  <pose>5 2 0 -0 1.57</pose>
+</model>
 </sdf>
