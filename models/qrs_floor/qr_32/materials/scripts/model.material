@@ -1,0 +1,15 @@
+material qr_qr_32/qr_qr_32
+{
+    technique
+    {
+        pass
+        {
+            texture_unit
+            {
+                texture qr_qr_32.png
+                filtering none
+                scale 1.0 1.0
+            }
+        }
+    }
+}
