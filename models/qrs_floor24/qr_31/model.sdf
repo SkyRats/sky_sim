@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<sdf version="1.5">
+    <model name="qr_31">
+        <static>true</static>
+        <link name="qr_31_link">
+            <pose>0 0 1e-3 0 0 1.5707963267948966</pose>
+            <visual name="visual_qr_31">
+                <cast_shadows>false</cast_shadows>
+                <geometry><box><size>0.2 0.2 1e-3</size></box></geometry>
+                <material>
+                    <script>
+                        <uri>model://qr_31/materials/scripts</uri>
+                        <uri>model://qr_31/materials/textures</uri>
+                        <name>qr_31/qr_31</name>
+                    </script>
+                </material>
+            </visual>
+        </link>
+    </model>
+</sdf>
