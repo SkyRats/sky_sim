@@ -1688,13 +1688,13 @@
       <pose>2.785 1.9 0.04 0 -0 0</pose>
     </model>
     <model name='qr_30'>
-      <frame name='qr_FIRA_teste::__model__' attached_to='qr_FIRA_teste::qr_FIRA_teste_link'>
+      <frame name='qr_30::__model__' attached_to='qr_30::qr_30_link'>
         <pose relative_to='__model__'>0 0 0 0 -0 0</pose>
       </frame>
       <static>1</static>
-      <link name='qr_FIRA_teste::qr_FIRA_teste_link'>
-        <pose relative_to='qr_FIRA_teste::__model__'>0 0 0.001 0 -0 1.5708</pose>
-        <visual name='visual_qr_FIRA_teste'>
+      <link name='qr_30::qr_30_link'>
+        <pose relative_to='qr_30::__model__'>0 0 0.001 0 -0 1.5708</pose>
+        <visual name='visual_qr_30'>
           <cast_shadows>0</cast_shadows>
           <geometry>
             <box>
@@ -1703,9 +1703,9 @@
           </geometry>
           <material>
             <script>
-              <uri>model://qr_FIRA_teste/materials/scripts</uri>
-              <uri>model://qr_FIRA_teste/materials/textures</uri>
-              <name>qr_FIRA_teste/qr_FIRA_teste</name>
+              <uri>model://qrs_floor24/qr_30/materials/scripts</uri>
+              <uri>model://qrs_floor24/qr_30/materials/textures</uri>
+              <name>qr_30/qr_30</name>
             </script>
           </material>
         </visual>
@@ -1716,13 +1716,13 @@
       <pose>-2.785 0 0.06 0 -0 0</pose>
     </model>
     <model name='qr_31'>
-      <frame name='qr_FIRA_teste::__model__' attached_to='qr_FIRA_teste::qr_FIRA_teste_link'>
+      <frame name='qr_31::__model__' attached_to='qr_31::qr_31_link'>
         <pose relative_to='__model__'>0 0 0 0 -0 0</pose>
       </frame>
       <static>1</static>
-      <link name='qr_FIRA_teste::qr_FIRA_teste_link'>
-        <pose relative_to='qr_FIRA_teste::__model__'>0 0 0.001 0 -0 1.5708</pose>
-        <visual name='visual_qr_FIRA_teste'>
+      <link name='qr_31::qr_31_link'>
+        <pose relative_to='qr_31::__model__'>0 0 0.001 0 -0 1.5708</pose>
+        <visual name='visual_qr_31'>
           <cast_shadows>0</cast_shadows>
           <geometry>
             <box>
@@ -1731,9 +1731,9 @@
           </geometry>
           <material>
             <script>
-              <uri>model://qr_FIRA_teste/materials/scripts</uri>
-              <uri>model://qr_FIRA_teste/materials/textures</uri>
-              <name>qr_FIRA_teste/qr_FIRA_teste</name>
+              <uri>model://qrs_floor24/qr_31/materials/scripts</uri>
+              <uri>model://qrs_floor24/qr_31/materials/textures</uri>
+              <name>qr_31/qr_31</name>
             </script>
           </material>
         </visual>
@@ -1744,13 +1744,13 @@
       <pose>-1 0 0.06 0 -0 0</pose>
     </model>
     <model name='qr_32'>
-      <frame name='qr_FIRA_teste::__model__' attached_to='qr_FIRA_teste::qr_FIRA_teste_link'>
+      <frame name='qr_32::__model__' attached_to='qr_32::qr_32_link'>
         <pose relative_to='__model__'>0 0 0 0 -0 0</pose>
       </frame>
       <static>1</static>
-      <link name='qr_FIRA_teste::qr_FIRA_teste_link'>
-        <pose relative_to='qr_FIRA_teste::__model__'>0 0 0.001 0 -0 1.5708</pose>
-        <visual name='visual_qr_FIRA_teste'>
+      <link name='qr_32::qr_32_link'>
+        <pose relative_to='qr_32::__model__'>0 0 0.001 0 -0 1.5708</pose>
+        <visual name='visual_qr_32'>
           <cast_shadows>0</cast_shadows>
           <geometry>
             <box>
@@ -1759,9 +1759,9 @@
           </geometry>
           <material>
             <script>
-              <uri>model://qr_FIRA_teste/materials/scripts</uri>
-              <uri>model://qr_FIRA_teste/materials/textures</uri>
-              <name>qr_FIRA_teste/qr_FIRA_teste</name>
+              <uri>model://qrs_floor24/qr_32/materials/scripts</uri>
+              <uri>model://qrs_floor24/qr_32/materials/textures</uri>
+              <name>qr_32/qr_32</name>
             </script>
           </material>
         </visual>
@@ -1772,13 +1772,13 @@
       <pose>1 0 0.06 0 -0 0</pose>
     </model>
     <model name='qr_33'>
-      <frame name='qr_FIRA_teste::__model__' attached_to='qr_FIRA_teste::qr_FIRA_teste_link'>
+      <frame name='qr_33::__model__' attached_to='qr_33::qr_33_link'>
         <pose relative_to='__model__'>0 0 0 0 -0 0</pose>
       </frame>
       <static>1</static>
-      <link name='qr_FIRA_teste::qr_FIRA_teste_link'>
-        <pose relative_to='qr_FIRA_teste::__model__'>0 0 0.001 0 -0 1.5708</pose>
-        <visual name='visual_qr_FIRA_teste'>
+      <link name='qr_33::qr_33_link'>
+        <pose relative_to='qr_33::__model__'>0 0 0.001 0 -0 1.5708</pose>
+        <visual name='visual_qr_33'>
           <cast_shadows>0</cast_shadows>
           <geometry>
             <box>
@@ -1787,9 +1787,9 @@
           </geometry>
           <material>
             <script>
-              <uri>model://qr_FIRA_teste/materials/scripts</uri>
-              <uri>model://qr_FIRA_teste/materials/textures</uri>
-              <name>qr_FIRA_teste/qr_FIRA_teste</name>
+              <uri>model://qrs_floor24/qr_33/materials/scripts</uri>
+              <uri>model://qrs_floor24/qr_33/materials/textures</uri>
+              <name>qr_33/qr_33</name>
             </script>
           </material>
         </visual>
@@ -1800,13 +1800,13 @@
       <pose>2.785 0 0.06 0 -0 0</pose>
     </model>
     <model name='qr_20'>
-      <frame name='qr_FIRA_teste::__model__' attached_to='qr_FIRA_teste::qr_FIRA_teste_link'>
+      <frame name='qr_20::__model__' attached_to='qr_20::qr_20_link'>
         <pose relative_to='__model__'>0 0 0 0 -0 0</pose>
       </frame>
       <static>1</static>
-      <link name='qr_FIRA_teste::qr_FIRA_teste_link'>
-        <pose relative_to='qr_FIRA_teste::__model__'>0 0 0.001 0 -0 1.5708</pose>
-        <visual name='visual_qr_FIRA_teste'>
+      <link name='qr_20::qr_20_link'>
+        <pose relative_to='qr_20::__model__'>0 0 0.001 0 -0 1.5708</pose>
+        <visual name='visual_qr_20'>
           <cast_shadows>0</cast_shadows>
           <geometry>
             <box>
@@ -1815,9 +1815,9 @@
           </geometry>
           <material>
             <script>
-              <uri>model://qr_FIRA_teste/materials/scripts</uri>
-              <uri>model://qr_FIRA_teste/materials/textures</uri>
-              <name>qr_FIRA_teste/qr_FIRA_teste</name>
+              <uri>model://qrs_floor24/qr_20/materials/scripts</uri>
+              <uri>model://qrs_floor24/qr_20/materials/textures</uri>
+              <name>qr_20/qr_20</name>
             </script>
           </material>
         </visual>
@@ -1828,13 +1828,13 @@
       <pose>-2.785 1.8 0.06 0 -0 0</pose>
     </model>
     <model name='qr_21'>
-      <frame name='qr_FIRA_teste::__model__' attached_to='qr_FIRA_teste::qr_FIRA_teste_link'>
+      <frame name='qr_21::__model__' attached_to='qr_21::qr_21_link'>
         <pose relative_to='__model__'>0 0 0 0 -0 0</pose>
       </frame>
       <static>1</static>
-      <link name='qr_FIRA_teste::qr_FIRA_teste_link'>
-        <pose relative_to='qr_FIRA_teste::__model__'>0 0 0.001 0 -0 1.5708</pose>
-        <visual name='visual_qr_FIRA_teste'>
+      <link name='qr_21::qr_21_link'>
+        <pose relative_to='qr_21::__model__'>0 0 0.001 0 -0 1.5708</pose>
+        <visual name='visual_qr_21'>
           <cast_shadows>0</cast_shadows>
           <geometry>
             <box>
@@ -1843,9 +1843,9 @@
           </geometry>
           <material>
             <script>
-              <uri>model://qr_FIRA_teste/materials/scripts</uri>
-              <uri>model://qr_FIRA_teste/materials/textures</uri>
-              <name>qr_FIRA_teste/qr_FIRA_teste</name>
+              <uri>model://qrs_floor24/qr_21/materials/scripts</uri>
+              <uri>model://qrs_floor24/qr_21/materials/textures</uri>
+              <name>qr_21/qr_21</name>
             </script>
           </material>
         </visual>
@@ -1856,13 +1856,13 @@
       <pose>-1 1.8 0.06 0 -0 0</pose>
     </model>
     <model name='qr_22'>
-      <frame name='qr_FIRA_teste::__model__' attached_to='qr_FIRA_teste::qr_FIRA_teste_link'>
+      <frame name='qr_22::__model__' attached_to='qr_22::qr_22_link'>
         <pose relative_to='__model__'>0 0 0 0 -0 0</pose>
       </frame>
       <static>1</static>
-      <link name='qr_FIRA_teste::qr_FIRA_teste_link'>
-        <pose relative_to='qr_FIRA_teste::__model__'>0 0 0.001 0 -0 1.5708</pose>
-        <visual name='visual_qr_FIRA_teste'>
+      <link name='qr_22::qr_22_link'>
+        <pose relative_to='qr_22::__model__'>0 0 0.001 0 -0 1.5708</pose>
+        <visual name='visual_qr_22'>
           <cast_shadows>0</cast_shadows>
           <geometry>
             <box>
@@ -1871,9 +1871,9 @@
           </geometry>
           <material>
             <script>
-              <uri>model://qr_FIRA_teste/materials/scripts</uri>
-              <uri>model://qr_FIRA_teste/materials/textures</uri>
-              <name>qr_FIRA_teste/qr_FIRA_teste</name>
+              <uri>model://qrs_floor24/qr_22/materials/scripts</uri>
+              <uri>model://qrs_floor24/qr_22/materials/textures</uri>
+              <name>qr_22/qr_22</name>
             </script>
           </material>
         </visual>
@@ -1884,13 +1884,13 @@
       <pose>1 1.8 0.06 0 -0 0</pose>
     </model>
     <model name='qr_23'>
-      <frame name='qr_FIRA_teste::__model__' attached_to='qr_FIRA_teste::qr_FIRA_teste_link'>
+      <frame name='qr_23::__model__' attached_to='qr_23::qr_23_link'>
         <pose relative_to='__model__'>0 0 0 0 -0 0</pose>
       </frame>
       <static>1</static>
-      <link name='qr_FIRA_teste::qr_FIRA_teste_link'>
-        <pose relative_to='qr_FIRA_teste::__model__'>0 0 0.001 0 -0 1.5708</pose>
-        <visual name='visual_qr_FIRA_teste'>
+      <link name='qr_23::qr_23_link'>
+        <pose relative_to='qr_23::__model__'>0 0 0.001 0 -0 1.5708</pose>
+        <visual name='visual_qr_23'>
           <cast_shadows>0</cast_shadows>
           <geometry>
             <box>
@@ -1899,9 +1899,9 @@
           </geometry>
           <material>
             <script>
-              <uri>model://qr_FIRA_teste/materials/scripts</uri>
-              <uri>model://qr_FIRA_teste/materials/textures</uri>
-              <name>qr_FIRA_teste/qr_FIRA_teste</name>
+              <uri>model://qrs_floor24/qr_23/materials/scripts</uri>
+              <uri>model://qrs_floor24/qr_23/materials/textures</uri>
+              <name>qr_23/qr_23</name>
             </script>
           </material>
         </visual>
@@ -1912,13 +1912,13 @@
       <pose>2.785 1.8 0.06 0 -0 0</pose>
     </model>
     <model name='qr_10'>
-      <frame name='qr_FIRA_teste::__model__' attached_to='qr_FIRA_teste::qr_FIRA_teste_link'>
+      <frame name='qr_10::__model__' attached_to='qr_10::qr_10_link'>
         <pose relative_to='__model__'>0 0 0 0 -0 0</pose>
       </frame>
       <static>1</static>
-      <link name='qr_FIRA_teste::qr_FIRA_teste_link'>
-        <pose relative_to='qr_FIRA_teste::__model__'>0 0 0.001 0 -0 1.5708</pose>
-        <visual name='visual_qr_FIRA_teste'>
+      <link name='qr_10::qr_10_link'>
+        <pose relative_to='qr_10::__model__'>0 0 0.001 0 -0 1.5708</pose>
+        <visual name='visual_qr_10'>
           <cast_shadows>0</cast_shadows>
           <geometry>
             <box>
@@ -1927,9 +1927,9 @@
           </geometry>
           <material>
             <script>
-              <uri>model://qr_FIRA_teste/materials/scripts</uri>
-              <uri>model://qr_FIRA_teste/materials/textures</uri>
-              <name>qr_FIRA_teste/qr_FIRA_teste</name>
+              <uri>model://qrs_floor24/qr_10/materials/scripts</uri>
+              <uri>model://qrs_floor24/qr_10/materials/textures</uri>
+              <name>qr_10/qr_10</name>
             </script>
           </material>
         </visual>
@@ -1940,13 +1940,13 @@
       <pose>-2.785 3.57 0.06 0 -0 0</pose>
     </model>
     <model name='qr_11'>
-      <frame name='qr_FIRA_teste::__model__' attached_to='qr_FIRA_teste::qr_FIRA_teste_link'>
+      <frame name='qr_11::__model__' attached_to='qr_11::qr_11_link'>
         <pose relative_to='__model__'>0 0 0 0 -0 0</pose>
       </frame>
       <static>1</static>
-      <link name='qr_FIRA_teste::qr_FIRA_teste_link'>
-        <pose relative_to='qr_FIRA_teste::__model__'>0 0 0.001 0 -0 1.5708</pose>
-        <visual name='visual_qr_FIRA_teste'>
+      <link name='qr_11::qr_11_link'>
+        <pose relative_to='qr_11::__model__'>0 0 0.001 0 -0 1.5708</pose>
+        <visual name='visual_qr_11'>
           <cast_shadows>0</cast_shadows>
           <geometry>
             <box>
@@ -1955,9 +1955,9 @@
           </geometry>
           <material>
             <script>
-              <uri>model://qr_FIRA_teste/materials/scripts</uri>
-              <uri>model://qr_FIRA_teste/materials/textures</uri>
-              <name>qr_FIRA_teste/qr_FIRA_teste</name>
+              <uri>model://qrs_floor24/qr_11/materials/scripts</uri>
+              <uri>model://qrs_floor24/qr_11/materials/textures</uri>
+              <name>qr_11/qr_11</name>
             </script>
           </material>
         </visual>
@@ -1968,13 +1968,13 @@
       <pose>-1 3.57 0.06 0 -0 0</pose>
     </model>
     <model name='qr_12'>
-      <frame name='qr_FIRA_teste::__model__' attached_to='qr_FIRA_teste::qr_FIRA_teste_link'>
+      <frame name='qr_12::__model__' attached_to='qr_12::qr_12_link'>
         <pose relative_to='__model__'>0 0 0 0 -0 0</pose>
       </frame>
       <static>1</static>
-      <link name='qr_FIRA_teste::qr_FIRA_teste_link'>
-        <pose relative_to='qr_FIRA_teste::__model__'>0 0 0.001 0 -0 1.5708</pose>
-        <visual name='visual_qr_FIRA_teste'>
+      <link name='qr_12::qr_12_link'>
+        <pose relative_to='qr_12::__model__'>0 0 0.001 0 -0 1.5708</pose>
+        <visual name='visual_qr_12'>
           <cast_shadows>0</cast_shadows>
           <geometry>
             <box>
@@ -1983,9 +1983,9 @@
           </geometry>
           <material>
             <script>
-              <uri>model://qr_FIRA_teste/materials/scripts</uri>
-              <uri>model://qr_FIRA_teste/materials/textures</uri>
-              <name>qr_FIRA_teste/qr_FIRA_teste</name>
+              <uri>model://qrs_floor24/qr_12/materials/scripts</uri>
+              <uri>model://qrs_floor24/qr_12/materials/textures</uri>
+              <name>qr_12/qr_12</name>
             </script>
           </material>
         </visual>
@@ -1996,13 +1996,13 @@
       <pose>1 3.57 0.06 0 -0 0</pose>
     </model>
     <model name='qr_13'>
-      <frame name='qr_FIRA_teste::__model__' attached_to='qr_FIRA_teste::qr_FIRA_teste_link'>
+      <frame name='qr_13::__model__' attached_to='qr_13::qr_13_link'>
         <pose relative_to='__model__'>0 0 0 0 -0 0</pose>
       </frame>
       <static>1</static>
-      <link name='qr_FIRA_teste::qr_FIRA_teste_link'>
-        <pose relative_to='qr_FIRA_teste::__model__'>0 0 0.001 0 -0 1.5708</pose>
-        <visual name='visual_qr_FIRA_teste'>
+      <link name='qr_13::qr_13_link'>
+        <pose relative_to='qr_13::__model__'>0 0 0.001 0 -0 1.5708</pose>
+        <visual name='visual_qr_13'>
           <cast_shadows>0</cast_shadows>
           <geometry>
             <box>
@@ -2011,9 +2011,9 @@
           </geometry>
           <material>
             <script>
-              <uri>model://qr_FIRA_teste/materials/scripts</uri>
-              <uri>model://qr_FIRA_teste/materials/textures</uri>
-              <name>qr_FIRA_teste/qr_FIRA_teste</name>
+              <uri>model://qrs_floor24/qr_13/materials/scripts</uri>
+              <uri>model://qrs_floor24/qr_13/materials/textures</uri>
+              <name>qr_13/qr_13</name>
             </script>
           </material>
         </visual>
@@ -2024,13 +2024,13 @@
       <pose>2.785 3.57 0.06 0 -0 0</pose>
     </model>
     <model name='qr_00'>
-      <frame name='qr_FIRA_teste::__model__' attached_to='qr_FIRA_teste::qr_FIRA_teste_link'>
+      <frame name='qr_00::__model__' attached_to='qr_00::qr_00_link'>
         <pose relative_to='__model__'>0 0 0 0 -0 0</pose>
       </frame>
       <static>1</static>
-      <link name='qr_FIRA_teste::qr_FIRA_teste_link'>
-        <pose relative_to='qr_FIRA_teste::__model__'>0 0 0.001 0 -0 1.5708</pose>
-        <visual name='visual_qr_FIRA_teste'>
+      <link name='qr_00::qr_00_link'>
+        <pose relative_to='qr_00::__model__'>0 0 0.001 0 -0 1.5708</pose>
+        <visual name='visual_qr_00'>
           <cast_shadows>0</cast_shadows>
           <geometry>
             <box>
@@ -2039,9 +2039,9 @@
           </geometry>
           <material>
             <script>
-              <uri>model://qr_FIRA_teste/materials/scripts</uri>
-              <uri>model://qr_FIRA_teste/materials/textures</uri>
-              <name>qr_FIRA_teste/qr_FIRA_teste</name>
+              <uri>model://qrs_floor24/qr_00/materials/scripts</uri>
+              <uri>model://qrs_floor24/qr_00/materials/textures</uri>
+              <name>qr_00/qr_00</name>
             </script>
           </material>
         </visual>
@@ -2052,13 +2052,13 @@
       <pose>-2.785 5.37 0.06 0 -0 0</pose>
     </model>
     <model name='qr_01'>
-      <frame name='qr_FIRA_teste::__model__' attached_to='qr_FIRA_teste::qr_FIRA_teste_link'>
+      <frame name='qr_01::__model__' attached_to='qr_01::qr_01_link'>
         <pose relative_to='__model__'>0 0 0 0 -0 0</pose>
       </frame>
       <static>1</static>
-      <link name='qr_FIRA_teste::qr_FIRA_teste_link'>
-        <pose relative_to='qr_FIRA_teste::__model__'>0 0 0.001 0 -0 1.5708</pose>
-        <visual name='visual_qr_FIRA_teste'>
+      <link name='qr_01::qr_01_link'>
+        <pose relative_to='qr_01::__model__'>0 0 0.001 0 -0 1.5708</pose>
+        <visual name='visual_qr_01'>
           <cast_shadows>0</cast_shadows>
           <geometry>
             <box>
@@ -2067,9 +2067,9 @@
           </geometry>
           <material>
             <script>
-              <uri>model://qr_FIRA_teste/materials/scripts</uri>
-              <uri>model://qr_FIRA_teste/materials/textures</uri>
-              <name>qr_FIRA_teste/qr_FIRA_teste</name>
+              <uri>model://qrs_floor24/qr_01/materials/scripts</uri>
+              <uri>model://qrs_floor24/qr_01/materials/textures</uri>
+              <name>qr_01/qr_01</name>
             </script>
           </material>
         </visual>
@@ -2080,13 +2080,13 @@
       <pose>-1 5.37 0.06 0 -0 0</pose>
     </model>
     <model name='qr_02'>
-      <frame name='qr_FIRA_teste::__model__' attached_to='qr_FIRA_teste::qr_FIRA_teste_link'>
+      <frame name='qr_02::__model__' attached_to='qr_02::qr_02_link'>
         <pose relative_to='__model__'>0 0 0 0 -0 0</pose>
       </frame>
       <static>1</static>
-      <link name='qr_FIRA_teste::qr_FIRA_teste_link'>
-        <pose relative_to='qr_FIRA_teste::__model__'>0 0 0.001 0 -0 1.5708</pose>
-        <visual name='visual_qr_FIRA_teste'>
+      <link name='qr_02::qr_02_link'>
+        <pose relative_to='qr_02::__model__'>0 0 0.001 0 -0 1.5708</pose>
+        <visual name='visual_qr_02'>
           <cast_shadows>0</cast_shadows>
           <geometry>
             <box>
@@ -2094,10 +2094,10 @@
             </box>
           </geometry>
           <material>
-            <script>
-              <uri>model://qr_FIRA_teste/materials/scripts</uri>
-              <uri>model://qr_FIRA_teste/materials/textures</uri>
-              <name>qr_FIRA_teste/qr_FIRA_teste</name>
+        <script>
+          <uri>model://qrs_floor24/qr_02/materials/scripts</uri>
+          <uri>model://qrs_floor24/qr_02/materials/textures</uri>
+          <name>qr_02/qr_02</name>
             </script>
           </material>
         </visual>
@@ -2108,24 +2108,24 @@
       <pose>1 5.37 0.06 0 -0 0</pose>
     </model>
     <model name='qr_03'>
-      <frame name='qr_FIRA_teste::__model__' attached_to='qr_FIRA_teste::qr_FIRA_teste_link'>
+      <frame name='qr_03::__model__' attached_to='qr_03::qr_03_link'>
         <pose relative_to='__model__'>0 0 0 0 -0 0</pose>
       </frame>
       <static>1</static>
-      <link name='qr_FIRA_teste::qr_FIRA_teste_link'>
-        <pose relative_to='qr_FIRA_teste::__model__'>0 0 0.001 0 -0 1.5708</pose>
-        <visual name='visual_qr_FIRA_teste'>
+      <link name='qr_03::qr_03_link'>
+        <pose relative_to='qr_03::__model__'>0 0 0.001 0 -0 1.5708</pose>
+        <visual name='visual_qr_03'>
           <cast_shadows>0</cast_shadows>
           <geometry>
             <box>
               <size>0.2 0.2 0.001</size>
             </box>
-          </geometry>
-          <material>
+              </geometry>
+              <material>
             <script>
-              <uri>model://qr_FIRA_teste/materials/scripts</uri>
-              <uri>model://qr_FIRA_teste/materials/textures</uri>
-              <name>qr_FIRA_teste/qr_FIRA_teste</name>
+              <uri>model://qrs_floor24/qr_03/materials/scripts</uri>
+              <uri>model://qrs_floor24/qr_03/materials/textures</uri>
+              <name>qr_03/qr_03</name>
             </script>
           </material>
         </visual>
@@ -2320,7 +2320,7 @@
       <model name='qr_00'>
         <pose>-2.785 5.37 0.06 0 -0 0</pose>
         <scale>1 1 1</scale>
-        <link name='qr_FIRA_teste::qr_FIRA_teste_link'>
+        <link name='qr_00::qr_00_link'>
           <pose>-2.785 5.37 0.061 0 -0 1.5708</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
@@ -2330,7 +2330,7 @@
       <model name='qr_01'>
         <pose>-1 5.37 0.06 0 -0 0</pose>
         <scale>1 1 1</scale>
-        <link name='qr_FIRA_teste::qr_FIRA_teste_link'>
+        <link name='qr_01::qr_01_link'>
           <pose>-1 5.37 0.061 0 -0 1.5708</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
@@ -2340,7 +2340,7 @@
       <model name='qr_02'>
         <pose>1 5.37 0.06 0 -0 0</pose>
         <scale>1 1 1</scale>
-        <link name='qr_FIRA_teste::qr_FIRA_teste_link'>
+        <link name='qr_02::qr_02_link'>
           <pose>1 5.37 0.061 0 -0 1.5708</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
@@ -2350,7 +2350,7 @@
       <model name='qr_03'>
         <pose>2.785 5.37 0.06 0 -0 0</pose>
         <scale>1 1 1</scale>
-        <link name='qr_FIRA_teste::qr_FIRA_teste_link'>
+        <link name='qr_03::qr_03_link'>
           <pose>2.785 5.37 0.061 0 -0 1.5708</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
@@ -2360,7 +2360,7 @@
       <model name='qr_10'>
         <pose>-2.785 3.57 0.06 0 -0 0</pose>
         <scale>1 1 1</scale>
-        <link name='qr_FIRA_teste::qr_FIRA_teste_link'>
+        <link name='qr_10::qr_10_link'>
           <pose>-2.785 3.57 0.061 0 -0 1.5708</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
@@ -2370,7 +2370,7 @@
       <model name='qr_11'>
         <pose>-1 3.57 0.06 0 -0 0</pose>
         <scale>1 1 1</scale>
-        <link name='qr_FIRA_teste::qr_FIRA_teste_link'>
+        <link name='qr_11::qr_11_link'>
           <pose>-1 3.57 0.061 0 -0 1.5708</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
@@ -2380,7 +2380,7 @@
       <model name='qr_12'>
         <pose>1 3.57 0.06 0 -0 0</pose>
         <scale>1 1 1</scale>
-        <link name='qr_FIRA_teste::qr_FIRA_teste_link'>
+        <link name='qr_12::qr_12_link'>
           <pose>1 3.57 0.061 0 -0 1.5708</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
@@ -2390,7 +2390,7 @@
       <model name='qr_13'>
         <pose>2.785 3.57 0.06 0 -0 0</pose>
         <scale>1 1 1</scale>
-        <link name='qr_FIRA_teste::qr_FIRA_teste_link'>
+        <link name='qr_13::qr_13_link'>
           <pose>2.785 3.57 0.061 0 -0 1.5708</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
@@ -2400,7 +2400,7 @@
       <model name='qr_20'>
         <pose>-2.785 1.8 0.06 0 -0 0</pose>
         <scale>1 1 1</scale>
-        <link name='qr_FIRA_teste::qr_FIRA_teste_link'>
+        <link name='qr_20::qr_20_link'>
           <pose>-2.785 1.8 0.061 0 -0 1.5708</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
@@ -2410,7 +2410,7 @@
       <model name='qr_21'>
         <pose>-1 1.8 0.06 0 -0 0</pose>
         <scale>1 1 1</scale>
-        <link name='qr_FIRA_teste::qr_FIRA_teste_link'>
+        <link name='qr_21::qr_21_link'>
           <pose>-1 1.8 0.061 0 -0 1.5708</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
@@ -2420,7 +2420,7 @@
       <model name='qr_22'>
         <pose>1 1.8 0.06 0 -0 0</pose>
         <scale>1 1 1</scale>
-        <link name='qr_FIRA_teste::qr_FIRA_teste_link'>
+        <link name='qr_22::qr_22_link'>
           <pose>1 1.8 0.061 0 -0 1.5708</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
@@ -2430,7 +2430,7 @@
       <model name='qr_23'>
         <pose>2.785 1.8 0.06 0 -0 0</pose>
         <scale>1 1 1</scale>
-        <link name='qr_FIRA_teste::qr_FIRA_teste_link'>
+        <link name='qr_23::qr_23_link'>
           <pose>2.785 1.8 0.061 0 -0 1.5708</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
@@ -2440,7 +2440,7 @@
       <model name='qr_30'>
         <pose>-2.785 0 0.06 0 -0 0</pose>
         <scale>1 1 1</scale>
-        <link name='qr_FIRA_teste::qr_FIRA_teste_link'>
+        <link name='qr_30::qr_30_link'>
           <pose>-2.785 0 0.061 0 -0 1.5708</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
@@ -2450,7 +2450,7 @@
       <model name='qr_31'>
         <pose>-1 0 0.06 0 -0 0</pose>
         <scale>1 1 1</scale>
-        <link name='qr_FIRA_teste::qr_FIRA_teste_link'>
+        <link name='qr_31::qr_31_link'>
           <pose>-1 0 0.061 0 -0 1.5708</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
@@ -2460,7 +2460,7 @@
       <model name='qr_32'>
         <pose>1 0 0.06 0 -0 0</pose>
         <scale>1 1 1</scale>
-        <link name='qr_FIRA_teste::qr_FIRA_teste_link'>
+        <link name='qr_32::qr_32_link'>
           <pose>1 0 0.061 0 -0 1.5708</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
@@ -2470,7 +2470,7 @@
       <model name='qr_33'>
         <pose>2.785 0 0.06 0 -0 0</pose>
         <scale>1 1 1</scale>
-        <link name='qr_FIRA_teste::qr_FIRA_teste_link'>
+        <link name='qr_33::qr_33_link'>
           <pose>2.785 0 0.061 0 -0 1.5708</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
