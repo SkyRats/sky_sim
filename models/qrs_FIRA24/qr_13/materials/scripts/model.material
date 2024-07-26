@@ -1,0 +1,15 @@
+material qr_13/qr_13
+{
+    technique
+    {
+        pass
+        {
+            texture_unit
+            {
+                texture qr_13.png
+                filtering none
+                scale 1.0 1.0
+            }
+        }
+    }
+}

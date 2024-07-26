@@ -1,0 +1,15 @@
+material qr_10/qr_10
+{
+    technique
+    {
+        pass
+        {
+            texture_unit
+            {
+                texture qr_10.png
+                filtering none
+                scale 1.0 1.0
+            }
+        }
+    }
+}
