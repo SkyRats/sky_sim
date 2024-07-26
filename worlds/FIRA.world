@@ -1076,13 +1076,13 @@
       <pose>0 2.785 0.03 0 -0 0</pose>
     </model>
     <model name='red_H'>
-      <frame name='H_vermelho::__model__' attached_to='H_vermelho::H_vermelho_link'>
+      <frame name='red_cross::__model__' attached_to='red_cross::red_cross_link'>
         <pose relative_to='__model__'>0 0 0 0 -0 0</pose>
       </frame>
       <static>1</static>
-      <link name='H_vermelho::H_vermelho_link'>
-        <pose relative_to='H_vermelho::__model__'>0 0 0.001 0 -0 1.5708</pose>
-        <visual name='visual_H_vermelho'>
+      <link name='red_cross::red_cross_link'>
+        <pose relative_to='red_cross::__model__'>0 0 0.001 0 -0 1.5708</pose>
+        <visual name='visual_red_cross'>
           <cast_shadows>0</cast_shadows>
           <geometry>
             <box>
@@ -1091,9 +1091,9 @@
           </geometry>
           <material>
             <script>
-              <uri>model://H_vermelho/materials/scripts</uri>
-              <uri>model://H_vermelho/materials/textures</uri>
-              <name>H_vermelho/H_vermelho</name>
+              <uri>model://red_cross/materials/scripts</uri>
+              <uri>model://red_cross/materials/textures</uri>
+              <name>red_cross/red_cross</name>
             </script>
           </material>
         </visual>
@@ -1703,8 +1703,8 @@
           </geometry>
           <material>
             <script>
-              <uri>model://qrs_floor24/qr_30/materials/scripts</uri>
-              <uri>model://qrs_floor24/qr_30/materials/textures</uri>
+              <uri>model://qrs_FIRA24/qr_30/materials/scripts</uri>
+              <uri>model://qrs_FIRA24/qr_30/materials/textures</uri>
               <name>qr_30/qr_30</name>
             </script>
           </material>
@@ -1731,8 +1731,8 @@
           </geometry>
           <material>
             <script>
-              <uri>model://qrs_floor24/qr_31/materials/scripts</uri>
-              <uri>model://qrs_floor24/qr_31/materials/textures</uri>
+              <uri>model://qrs_FIRA24/qr_31/materials/scripts</uri>
+              <uri>model://qrs_FIRA24/qr_31/materials/textures</uri>
               <name>qr_31/qr_31</name>
             </script>
           </material>
@@ -1759,8 +1759,8 @@
           </geometry>
           <material>
             <script>
-              <uri>model://qrs_floor24/qr_32/materials/scripts</uri>
-              <uri>model://qrs_floor24/qr_32/materials/textures</uri>
+              <uri>model://qrs_FIRA24/qr_32/materials/scripts</uri>
+              <uri>model://qrs_FIRA24/qr_32/materials/textures</uri>
               <name>qr_32/qr_32</name>
             </script>
           </material>
@@ -1787,8 +1787,8 @@
           </geometry>
           <material>
             <script>
-              <uri>model://qrs_floor24/qr_33/materials/scripts</uri>
-              <uri>model://qrs_floor24/qr_33/materials/textures</uri>
+              <uri>model://qrs_FIRA24/qr_33/materials/scripts</uri>
+              <uri>model://qrs_FIRA24/qr_33/materials/textures</uri>
               <name>qr_33/qr_33</name>
             </script>
           </material>
@@ -1815,8 +1815,8 @@
           </geometry>
           <material>
             <script>
-              <uri>model://qrs_floor24/qr_20/materials/scripts</uri>
-              <uri>model://qrs_floor24/qr_20/materials/textures</uri>
+              <uri>model://qrs_FIRA24/qr_20/materials/scripts</uri>
+              <uri>model://qrs_FIRA24/qr_20/materials/textures</uri>
               <name>qr_20/qr_20</name>
             </script>
           </material>
@@ -1843,8 +1843,8 @@
           </geometry>
           <material>
             <script>
-              <uri>model://qrs_floor24/qr_21/materials/scripts</uri>
-              <uri>model://qrs_floor24/qr_21/materials/textures</uri>
+              <uri>model://qrs_FIRA24/qr_21/materials/scripts</uri>
+              <uri>model://qrs_FIRA24/qr_21/materials/textures</uri>
               <name>qr_21/qr_21</name>
             </script>
           </material>
@@ -1871,8 +1871,8 @@
           </geometry>
           <material>
             <script>
-              <uri>model://qrs_floor24/qr_22/materials/scripts</uri>
-              <uri>model://qrs_floor24/qr_22/materials/textures</uri>
+              <uri>model://qrs_FIRA24/qr_22/materials/scripts</uri>
+              <uri>model://qrs_FIRA24/qr_22/materials/textures</uri>
               <name>qr_22/qr_22</name>
             </script>
           </material>
@@ -1899,8 +1899,8 @@
           </geometry>
           <material>
             <script>
-              <uri>model://qrs_floor24/qr_23/materials/scripts</uri>
-              <uri>model://qrs_floor24/qr_23/materials/textures</uri>
+              <uri>model://qrs_FIRA24/qr_23/materials/scripts</uri>
+              <uri>model://qrs_FIRA24/qr_23/materials/textures</uri>
               <name>qr_23/qr_23</name>
             </script>
           </material>
@@ -1927,8 +1927,8 @@
           </geometry>
           <material>
             <script>
-              <uri>model://qrs_floor24/qr_10/materials/scripts</uri>
-              <uri>model://qrs_floor24/qr_10/materials/textures</uri>
+              <uri>model://qrs_FIRA24/qr_10/materials/scripts</uri>
+              <uri>model://qrs_FIRA24/qr_10/materials/textures</uri>
               <name>qr_10/qr_10</name>
             </script>
           </material>
@@ -1955,8 +1955,8 @@
           </geometry>
           <material>
             <script>
-              <uri>model://qrs_floor24/qr_11/materials/scripts</uri>
-              <uri>model://qrs_floor24/qr_11/materials/textures</uri>
+              <uri>model://qrs_FIRA24/qr_11/materials/scripts</uri>
+              <uri>model://qrs_FIRA24/qr_11/materials/textures</uri>
               <name>qr_11/qr_11</name>
             </script>
           </material>
@@ -1983,8 +1983,8 @@
           </geometry>
           <material>
             <script>
-              <uri>model://qrs_floor24/qr_12/materials/scripts</uri>
-              <uri>model://qrs_floor24/qr_12/materials/textures</uri>
+              <uri>model://qrs_FIRA24/qr_12/materials/scripts</uri>
+              <uri>model://qrs_FIRA24/qr_12/materials/textures</uri>
               <name>qr_12/qr_12</name>
             </script>
           </material>
@@ -2011,8 +2011,8 @@
           </geometry>
           <material>
             <script>
-              <uri>model://qrs_floor24/qr_13/materials/scripts</uri>
-              <uri>model://qrs_floor24/qr_13/materials/textures</uri>
+              <uri>model://qrs_FIRA24/qr_13/materials/scripts</uri>
+              <uri>model://qrs_FIRA24/qr_13/materials/textures</uri>
               <name>qr_13/qr_13</name>
             </script>
           </material>
@@ -2039,8 +2039,8 @@
           </geometry>
           <material>
             <script>
-              <uri>model://qrs_floor24/qr_00/materials/scripts</uri>
-              <uri>model://qrs_floor24/qr_00/materials/textures</uri>
+              <uri>model://qrs_FIRA24/qr_00/materials/scripts</uri>
+              <uri>model://qrs_FIRA24/qr_00/materials/textures</uri>
               <name>qr_00/qr_00</name>
             </script>
           </material>
@@ -2067,8 +2067,8 @@
           </geometry>
           <material>
             <script>
-              <uri>model://qrs_floor24/qr_01/materials/scripts</uri>
-              <uri>model://qrs_floor24/qr_01/materials/textures</uri>
+              <uri>model://qrs_FIRA24/qr_01/materials/scripts</uri>
+              <uri>model://qrs_FIRA24/qr_01/materials/textures</uri>
               <name>qr_01/qr_01</name>
             </script>
           </material>
@@ -2095,8 +2095,8 @@
           </geometry>
           <material>
         <script>
-          <uri>model://qrs_floor24/qr_02/materials/scripts</uri>
-          <uri>model://qrs_floor24/qr_02/materials/textures</uri>
+          <uri>model://qrs_FIRA24/qr_02/materials/scripts</uri>
+          <uri>model://qrs_FIRA24/qr_02/materials/textures</uri>
           <name>qr_02/qr_02</name>
             </script>
           </material>
@@ -2123,8 +2123,8 @@
               </geometry>
               <material>
             <script>
-              <uri>model://qrs_floor24/qr_03/materials/scripts</uri>
-              <uri>model://qrs_floor24/qr_03/materials/textures</uri>
+              <uri>model://qrs_FIRA24/qr_03/materials/scripts</uri>
+              <uri>model://qrs_FIRA24/qr_03/materials/textures</uri>
               <name>qr_03/qr_03</name>
             </script>
           </material>
@@ -2161,7 +2161,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='fira_build'>
+      <model name='FIRA_building'>
         <pose>-0.038178 6.69332 1.0403 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link_0'>
@@ -2207,7 +2207,7 @@
           </link>
         </model>
       </model>
-      <model name='fira_eletrical'>
+      <model name='FIRA_pole'>
         <pose>1.6341 2.74746 1.02839 0 -0 3.13935</pose>
         <scale>1 1 1</scale>
         <link name='link_2'>
@@ -2480,7 +2480,7 @@
       <model name='red_H'>
         <pose>-2.785 -1.185 0.06 0 -0 0</pose>
         <scale>1 1 1</scale>
-        <link name='H_vermelho::H_vermelho_link'>
+        <link name='red_cross::red_cross_link'>
           <pose>-2.785 -1.185 0.061 0 -0 1.5708</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
@@ -2658,7 +2658,7 @@
         <projection_type>perspective</projection_type>
       </camera>
     </gui>
-    <model name='fira_eletrical'>
+    <model name='FIRA_pole'>
       <link name='link_2'>
         <inertial>
           <mass>0.0126915</mass>
@@ -2968,8 +2968,8 @@
             </geometry>
             <material>
               <script>
-                <uri>model://qr_Victim_6/materials/scripts</uri>
-                <uri>model://qr_Victim_6/materials/textures</uri>
+                <uri>model://qrs_FIRA24/qr_Victim_6/materials/scripts</uri>
+                <uri>model://qrs_FIRA24/qr_Victim_6/materials/textures</uri>
                 <name>qr_Victim_6/qr_Victim_6</name>
               </script>
             </material>
@@ -2993,8 +2993,8 @@
             </geometry>
             <material>
               <script>
-                <uri>model://qr_Victim_7/materials/scripts</uri>
-                <uri>model://qr_Victim_7/materials/textures</uri>
+                <uri>model://qrs_FIRA24/qr_Victim_7/materials/scripts</uri>
+                <uri>model://qrs_FIRA24/qr_Victim_7/materials/textures</uri>
                 <name>qr_Victim_7/qr_Victim_7</name>
               </script>
             </material>
@@ -3009,7 +3009,7 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>-3.44103 7.19812 0.493129 0 -0 0</pose>
     </model>
-    <model name='fira_build'>
+    <model name='FIRA_building'>
       <link name='link_0'>
         <inertial>
           <mass>0.583841</mass>
@@ -3218,8 +3218,8 @@
             </geometry>
             <material>
               <script>
-                <uri>model://qr_Victim_1/materials/scripts</uri>
-                <uri>model://qr_Victim_1/materials/textures</uri>
+                <uri>model://qrs_FIRA24/qr_Victim_1/materials/scripts</uri>
+                <uri>model://qrs_FIRA24/qr_Victim_1/materials/textures</uri>
                 <name>qr_Victim_1/qr_Victim_1</name>
               </script>
             </material>
@@ -3243,8 +3243,8 @@
             </geometry>
             <material>
               <script>
-                <uri>model://qr_Victim_2/materials/scripts</uri>
-                <uri>model://qr_Victim_2/materials/textures</uri>
+                <uri>model://qrs_FIRA24/qr_Victim_2/materials/scripts</uri>
+                <uri>model://qrs_FIRA24/qr_Victim_2/materials/textures</uri>
                 <name>qr_Victim_2/qr_Victim_2</name>
               </script>
             </material>
@@ -3268,8 +3268,8 @@
             </geometry>
             <material>
               <script>
-                <uri>model://qr_Victim_3/materials/scripts</uri>
-                <uri>model://qr_Victim_3/materials/textures</uri>
+                <uri>model://qrs_FIRA24/qr_Victim_3/materials/scripts</uri>
+                <uri>model://qrs_FIRA24/qr_Victim_3/materials/textures</uri>
                 <name>qr_Victim_3/qr_Victim_3</name>
               </script>
             </material>
