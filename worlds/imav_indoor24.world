@@ -81,7 +81,7 @@
     
     
     <include>
-      <uri>model://indoor_arena</uri>
+      <uri>model://imav_indoor24</uri>
       <pose> 0 0 1 0 0 0</pose>
     </include>
 
