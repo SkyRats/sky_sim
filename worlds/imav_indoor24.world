@@ -1,7 +1,7 @@
-<?xml version="1.0"?> 
+<?xml version="1.0"?>
 <sdf version="1.5">
   <world name="default">
-  
+
     <physics type="ode">
       <ode>
         <solver>
@@ -74,15 +74,15 @@
 
     <model name="iris">
       <include>
-        <uri>model://drone_with_camera_down</uri>
+        <uri>model://drone_with_2_cameras</uri>
       </include>
-      <pose> 0 0 0.05 0 0 0</pose>
+      <pose> -4 -3 0.05 0 0 1.57075</pose>
     </model>
-    
-    
+
+
     <include>
       <uri>model://imav_indoor24</uri>
-      <pose> 0 0 1 0 0 0</pose>
+      <pose> 0 0 0 0 0 0</pose>
     </include>
 
   </world>

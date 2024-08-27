@@ -1,5 +1,5 @@
-<?xml version="1.0"?> 
-<sdf version="1.5">  
+<?xml version="1.0"?>
+<sdf version="1.5">
   <world name="default">
     <physics type="ode">
       <ode>
@@ -92,7 +92,7 @@
 
     <model name="iris">
       <include>
-        <uri>model://drone_with_two_cameras</uri>
+        <uri>model://drone_with_2_cameras</uri>
       </include>
       <pose> 12 0 1 0 0 3.14159</pose>
     </model>
@@ -100,7 +100,7 @@
     <include>
       <uri>model://../models/rope_2</uri>
       <pose> 0 0 0 0 0 0</pose>
-    </include>  
+    </include>
 
   </world>
 </sdf>
