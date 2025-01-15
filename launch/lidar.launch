@@ -1,9 +1,14 @@
 <launch>
   <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
   <arg name="gui" default="true"/>
-    <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find sky_sim)/worlds/lidar.world"/>
+  
+  <!-- Include the empty world launch and load the lidar world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find sky_sim)/worlds/sae_slalom.world"/>
     <arg name="gui" value="$(arg gui)"/>
-    <!-- more default parameters can be changed here -->
   </include>
+  
+  <!-- Add the TF broadcaster to publish the static transform - Descobrir o que faz-->
+  <node name="hokuyo_tf_broadcaster" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 /base_link /hokuyo_sensor_link 100"/>
 </launch>
+
