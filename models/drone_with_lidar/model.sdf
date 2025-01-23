@@ -128,7 +128,7 @@
         </ray>
         <plugin name="hokuyo_node" filename="libgazebo_ros_laser.so">
           <robotNamespace></robotNamespace>
-          <topicName>/spur/laser/scan</topicName>
+          <topicName>/scan</topicName>
           <frameName>/hokuyo_sensor_link</frameName>
         </plugin>
       </sensor>
