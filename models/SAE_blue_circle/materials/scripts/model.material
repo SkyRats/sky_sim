@@ -1,4 +1,4 @@
-material qr_blue_circle/qr_blue_circle
+material SAE_blue_circle/SAE_blue_circle
 {
     technique
     {
@@ -6,7 +6,7 @@ material qr_blue_circle/qr_blue_circle
         {
             texture_unit
             {
-                texture qr_blue_circle.png
+                texture SAE_blue_circle.png
                 filtering none
                 scale 1.0 1.0
             }
