@@ -1,4 +1,3 @@
-<?xml version='1.0'?>
 <sdf version='1.7'>
   <world name='default'>
     <physics type='ode'>
@@ -1129,15 +1128,35 @@
       <pose>2.33861 4.1931 0 0 -0 0</pose>
     </model>
     <state world_name='default'>
-      <sim_time>79 469000000</sim_time>
-      <real_time>113 637753767</real_time>
-      <wall_time>1736977883 837763784</wall_time>
-      <iterations>79469</iterations>
+      <sim_time>872 323000000</sim_time>
+      <real_time>796 275340388</real_time>
+      <wall_time>1750478244 246783068</wall_time>
+      <iterations>792854</iterations>
       <model name='SAE_slalom'>
-        <pose>4.08766 9.57066 -0.032692 0 0 -3.13968</pose>
+        <pose>2.33861 4.1931 -13.082 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose>4.08766 9.57066 -0.032692 0 0 -3.13968</pose>
+          <pose>2.33861 4.1931 -13.082 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='black_pole'>
+        <pose>0.117467 6.47831 -2.17703 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0.117467 6.47831 -2.17703 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='blue_pole'>
+        <pose>2.96945 5.35855 -2.18695 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>2.96945 5.35855 -2.18695 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
@@ -1154,61 +1173,81 @@
         </link>
       </model>
       <model name='iris'>
-        <pose>4.10825 0.34519 -0.025057 5e-06 -1e-06 1.64784</pose>
+        <pose>5.58644 -0.171542 -0.025148 0.000786 -0.00038 1.5665</pose>
         <scale>1 1 1</scale>
         <link name='drone_with_camera::cam_link'>
-          <pose>4.10825 0.34519 -0.045057 5e-06 -1e-06 1.64784</pose>
+          <pose>5.58643 -0.171534 -0.045148 0.000786 -0.00038 1.5665</pose>
           <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>-0 -0 0 0 -0 0</acceleration>
+          <acceleration>-0 -0 0 -0 -0 -0</acceleration>
           <wrench>-0 -0 0 0 -0 0</wrench>
         </link>
         <link name='drone_with_camera::hokuyo_link'>
-          <pose>4.10825 0.34519 -0.025057 5e-06 -1e-06 1.64784</pose>
+          <pose>5.58644 -0.171542 -0.025148 0.000786 -0.00038 1.5665</pose>
           <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
+          <acceleration>-0 0 0 0 -0 0</acceleration>
+          <wrench>-0 0 0 0 -0 0</wrench>
         </link>
         <link name='drone_with_camera::iris::base_link'>
-          <pose>4.10825 0.34519 0.169866 5e-06 -1e-06 1.64784</pose>
+          <pose>5.5866 -0.171616 0.169775 0.000786 -0.00038 1.5665</pose>
+          <velocity>-0 -0 0 0 -0 0</velocity>
+          <acceleration>-0 -0 0 0 -0 0</acceleration>
+          <wrench>-0 -0 0 0 -0 0</wrench>
+        </link>
+        <link name='drone_with_camera::iris::iris/ground_truth/odometry_sensorgt_link'>
+          <pose>5.5866 -0.171616 0.169775 0.000786 -0.00038 1.5665</pose>
+          <velocity>-0 -0 0 0 -0 0</velocity>
+          <acceleration>-0 -0 -0 0 -0 0</acceleration>
+          <wrench>-0 -0 -0 0 -0 0</wrench>
+        </link>
+        <link name='drone_with_camera::iris::iris/imu_link'>
+          <pose>5.5866 -0.171616 0.169775 0.000786 -0.00038 1.5665</pose>
+          <velocity>-0 -0 0 0 -0 0</velocity>
+          <acceleration>-0 -0 -0 -0 -0 -0</acceleration>
+          <wrench>-0 -0 -0 0 -0 0</wrench>
+        </link>
+        <link name='drone_with_camera::iris::rotor_0'>
+          <pose>5.80717 -0.042572 0.192651 -0.000812 -0.000319 -2.39954</pose>
           <velocity>-0 -0 0 0 -0 0</velocity>
           <acceleration>-0 0 0 0 -0 0</acceleration>
           <wrench>-0 0 0 0 -0 0</wrench>
         </link>
-        <link name='drone_with_camera::iris::iris/ground_truth/odometry_sensorgt_link'>
-          <pose>4.10825 0.34519 0.169866 5e-06 -1e-06 1.64784</pose>
-          <velocity>-0 -0 0 0 -0 0</velocity>
-          <acceleration>0 -0 -0 0 -0 0</acceleration>
-          <wrench>0 -0 -0 0 -0 0</wrench>
-        </link>
-        <link name='drone_with_camera::iris::iris/imu_link'>
-          <pose>4.10825 0.34519 0.169866 5e-06 -1e-06 1.64784</pose>
-          <velocity>-0 -0 0 0 -0 0</velocity>
-          <acceleration>0 -0 0 0 -0 0</acceleration>
-          <wrench>0 -0 0 0 -0 0</wrench>
-        </link>
-        <link name='drone_with_camera::iris::rotor_0'>
-          <pose>4.3176 0.491737 0.192865 5e-06 -1e-06 1.64465</pose>
-          <velocity>-0 -0 0 0 -0 0</velocity>
-          <acceleration>0 -0 0 0 -0 0</acceleration>
-          <wrench>0 -0 0 0 -0 0</wrench>
-        </link>
         <link name='drone_with_camera::iris::rotor_1'>
-          <pose>3.91885 0.200183 0.192867 5e-06 -1e-06 1.64465</pose>
+          <pose>5.38606 -0.300764 0.192882 -0.000481 0.000728 -1.03884</pose>
           <velocity>-0 -0 -0 0 -0 0</velocity>
-          <acceleration>0 -0 0 0 -0 0</acceleration>
-          <wrench>0 -0 0 0 -0 0</wrench>
+          <acceleration>-0 -0 0 0 -0 0</acceleration>
+          <wrench>-0 -0 0 0 -0 0</wrench>
         </link>
         <link name='drone_with_camera::iris::rotor_2'>
-          <pose>3.8789 0.457873 0.192867 5e-06 -1e-06 1.65102</pose>
+          <pose>5.36717 -0.040681 0.192997 -0.00041 0.00077 -0.944205</pose>
           <velocity>-0 -0 -0 0 -0 0</velocity>
-          <acceleration>0 -0 -0 0 -0 0</acceleration>
-          <wrench>0 -0 -0 0 -0 0</wrench>
+          <acceleration>-0 0 -0 0 -0 0</acceleration>
+          <wrench>-0 0 -0 0 -0 0</wrench>
         </link>
         <link name='drone_with_camera::iris::rotor_3'>
-          <pose>4.31767 0.230968 0.192864 5e-06 -1e-06 1.65102</pose>
+          <pose>5.78605 -0.302483 0.192568 0.000792 0.000367 0.682532</pose>
           <velocity>-0 -0 0 0 -0 0</velocity>
-          <acceleration>-0 -0 -0 0 -0 0</acceleration>
-          <wrench>-0 -0 -0 0 -0 0</wrench>
+          <acceleration>-0 -0 0 0 -0 0</acceleration>
+          <wrench>-0 -0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='pink_pole'>
+        <pose>2.73426 8.45848 -2.00761 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>2.73426 8.45848 -2.00761 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='red_pole'>
+        <pose>-0.558478 3.39285 -1.84561 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-0.558478 3.39285 -1.84561 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <light name='sun'>
@@ -1217,10 +1256,194 @@
     </state>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose>-7.38535 5.58263 5.33915 -0 0.502993 -0.495155</pose>
+        <pose>9.98699 -11.6436 13.2358 0 0.845796 1.75203</pose>
         <view_controller>orbit</view_controller>
         <projection_type>perspective</projection_type>
       </camera>
     </gui>
+    <model name='black_pole'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>//black_pole/meshes/black_pole.dae</uri>
+            </mesh>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1.2</mu>
+                  <mu2>1.2</mu2>
+                </ode>
+              </friction>
+            </surface>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://black_pole/meshes/black_pole.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>0.117467 10.9966 0 0 -0 0</pose>
+    </model>
+    <model name='red_pole'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>//red_pole/meshes/red_pole.dae</uri>
+            </mesh>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1.2</mu>
+                  <mu2>1.2</mu2>
+                </ode>
+              </friction>
+            </surface>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://red_pole/meshes/red_pole.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-5.55135 7.6251 0 0 -0 0</pose>
+    </model>
+    <model name='blue_pole'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>//blue_pole/meshes/blue_pole.dae</uri>
+            </mesh>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1.2</mu>
+                  <mu2>1.2</mu2>
+                </ode>
+              </friction>
+            </surface>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://blue_pole/meshes/blue_pole.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-0.716668 10.4301 0 0 -0 0</pose>
+    </model>
+    <model name='pink_pole'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>//pink_pole/meshes/pink_pole.dae</uri>
+            </mesh>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1.2</mu>
+                  <mu2>1.2</mu2>
+                </ode>
+              </friction>
+            </surface>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://pink_pole/meshes/pink_pole.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>3.1092 7.1198 0 0 -0 0</pose>
+    </model>
   </world>
 </sdf>
